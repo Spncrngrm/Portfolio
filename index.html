@@ -58,7 +58,9 @@
       <!-- Right: Nav -->
       <nav class="flex items-center gap-6 text-sm">
         <a href="#about" data-scroll class="text-gray-700 hover:text-black transition">About</a>
-        <a href="#projects" data-scroll class="text-gray-700 hover:text-black transition">Projects</a>
+        <!-- On mobile, jump to first project; on md+ keep gallery -->
+        <a href="#proj1" data-scroll class="text-gray-700 hover:text-black transition md:hidden">Projects</a>
+        <a href="#projects" data-scroll class="text-gray-700 hover:text-black transition hidden md:inline">Projects</a>
         <a href="#contact" data-scroll class="text-gray-700 hover:text-black transition">Contact</a>
       </nav>
     </div>
@@ -68,16 +70,18 @@
 
 
   <!-- Everything that should snap goes inside this scroller -->
-  <main id="snap" class="h-screen overflow-y-scroll snap-y snap-mandatory">
+  <!-- Disable snap on mobile; keep snap on md+ -->
+  <main id="snap" class="h-screen overflow-y-scroll md:snap-y md:snap-mandatory">
 
     <!-- Hero Banner -->
-    <header class="relative min-h-screen flex flex-col items-center justify-center text-center text-white snap-start [scroll-snap-stop:always]">
+    <header class="relative min-h-screen flex flex-col items-center justify-center text-center text-white md:snap-start [scroll-snap-stop:always]">
       <img src="images/mountains-hero.png" alt="Mountains" class="absolute inset-0 w-full h-full object-cover" />
       <div class="absolute inset-0 bg-black/45"></div>
 
       <div class="relative z-10">
-        <h1 class="text-5xl font-bold">Spencer Ingram</h1>
-        <p class="mt-2 text-lg">Waterloo • Volleyball • Computer Engineering</p>
+        <!-- ~70% sizes on mobile, original on md+ -->
+        <h1 class="text-4xl md:text-5xl font-bold">Spencer Ingram</h1>
+        <p class="mt-2 text-base md:text-lg">Waterloo • Volleyball • Computer Engineering</p>
       </div>
 
       <!-- Scroll Down Arrow + text bounce together -->
@@ -92,7 +96,7 @@
     </header>
 
     <!-- About Me -->
-    <section id="about" class="py-20 bg-gray-100 min-h-screen flex flex-col justify-center snap-start">
+    <section id="about" class="py-20 bg-gray-100 min-h-screen flex flex-col justify-center md:snap-start">
       <div class="max-w-7xl mx-auto grid md:grid-cols-[2.5fr_1.5fr] gap-16 px-6">
 
         <!-- Left: Headshot + Text -->
@@ -132,7 +136,7 @@
     </section>
 
     <!-- Projects Gallery (feature flag: hide on mobile) -->
-    <section id="projects" class="hidden md:flex py-20 bg-white min-h-screen snap-start flex-col justify-center">
+    <section id="projects" class="hidden md:flex py-20 bg-white min-h-screen md:snap-start flex-col justify-center">
       <h2 class="text-3xl font-bold text-center mb-10">Experience & Projects</h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 max-w-6xl mx-auto">
@@ -205,7 +209,7 @@
     <!-- === Project Descriptions (alternating) === -->
 
     <!-- 1) Co-op -->
-    <section id="proj1" class="py-20 bg-gray-50 min-h-screen snap-start flex items-center">
+    <section id="proj1" class="py-20 bg-gray-50 min-h-screen md:snap-start flex items-center">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
         <div class="w-full md:w-1/2">
           <div class="carousel" data-gallery="pacesetter" data-autoplay="true" tabindex="0">
@@ -233,7 +237,7 @@
     </section>
 
     <!-- 2) Volleyball -->
-    <section id="proj2" class="py-20 bg-white min-h-screen snap-start flex items-center">
+    <section id="proj2" class="py-20 bg-white min-h-screen md:snap-start flex items-center">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-8 px-6">
         <div class="w-full md:w-1/2">
           <div class="carousel" data-gallery="volleyball" tabindex="0">
@@ -259,7 +263,7 @@
     </section>
 
     <!-- 3) Rocketry -->
-    <section id="proj3" class="py-20 bg-gray-50 min-h-screen snap-start flex items-center">
+    <section id="proj3" class="py-20 bg-gray-50 min-h-screen md:snap-start flex items-center">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
         <div class="w-full md:w-1/2">
           <div class="carousel" data-gallery="rocketry" data-autoplay="true" tabindex="0">
@@ -287,7 +291,7 @@
     </section>
 
     <!-- 4) 3D Printer -->
-    <section id="proj4" class="py-20 bg-white min-h-screen snap-start flex items-center">
+    <section id="proj4" class="py-20 bg-white min-h-screen md:snap-start flex items-center">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-8 px-6">
         <div class="w-full md:w-1/2">
           <img src="images/3dprinter.png" class="rounded-lg shadow-lg w-full h-auto" alt="">
@@ -299,13 +303,13 @@
             for PLA, PETG, and ASA. This 3d printer was fully operational just before I graduated grade 10,
             and is currently operating in my high school.
           </p>
-          <p class="mt-4 text-sm text-gray-600"><strong>Tools:</strong> Cura/PrusaSlicer, callipers, bed levelling, design in Fusion 360</p>
+          <p class="mt-4 text-sm text-gray-600"><strong>Tools:</strong> Cura/PrusaSlicer, callippers, bed levelling, design in Fusion 360</p>
         </div>
       </div>
     </section>
 
     <!-- 5) Laser Cutter -->
-    <section id="proj5" class="py-20 bg-gray-50 min-h-screen snap-start flex items-center">
+    <section id="proj5" class="py-20 bg-gray-50 min-h-screen md:snap-start flex items-center">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
         <div class="w-full md:w-1/2">
           <div class="carousel" data-gallery="laser" tabindex="0">
@@ -329,7 +333,7 @@
     </section>
 
     <!-- 6) Temperature Sensor -->
-    <section id="proj6" class="py-20 bg-white min-h-screen snap-start flex items-center">
+    <section id="proj6" class="py-20 bg-white min-h-screen md:snap-start flex items-center">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-8 px-6">
         <div class="w-full md:w-1/2">
           <div class="carousel" data-gallery="tempsensor" data-autoplay="true" tabindex="0">
@@ -357,7 +361,7 @@
     </section>
 
     <!-- 7) Banking Site -->
-    <section id="proj7" class="py-20 bg-gray-50 min-h-screen snap-start flex items-center">
+    <section id="proj7" class="py-20 bg-gray-50 min-h-screen md:snap-start flex items-center">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
         <div class="w-full md:w-1/2">
           <div class="carousel" data-gallery="banking" tabindex="0">
@@ -380,7 +384,7 @@
     </section>
 
     <!-- 8) Fishing Game -->
-    <section id="proj8" class="py-20 bg-white min-h-screen snap-start flex items-center">
+    <section id="proj8" class="py-20 bg-white min-h-screen md:snap-start flex items-center">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row-reverse items-center gap-8 px-6">
         <div class="w-full md:w-1/2">
           <div class="carousel" data-gallery="fishing" data-autoplay="true" tabindex="0">
@@ -413,7 +417,7 @@
     </section>
 
     <!-- 9) Rubik’s Cube Robot -->
-    <section id="proj9" class="py-20 bg-gray-50 min-h-screen snap-start flex items-center">
+    <section id="proj9" class="py-20 bg-gray-50 min-h-screen md:snap-start flex items-center">
       <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-8 px-6">
         <div class="w-full md:w-1/2">
           <img src="images/rubiks.png" class="rounded-lg shadow-lg w-full h-auto" alt="">
@@ -432,7 +436,7 @@
 
 
     <!-- Modal Lightbox (reused for any gallery) -->
-    <div id="lightbox" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50 snap-start">
+    <div id="lightbox" class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50 md:snap-start">
       <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl" aria-label="Close">&times;</button>
       <div class="max-w-5xl w-full mx-4">
         <div class="carousel" data-autoplay="true" tabindex="0">
@@ -445,7 +449,7 @@
     </div>
 
     <!-- Contact -->
-    <section id="contact" class="min-h-screen snap-start flex items-center bg-white gap-3">
+    <section id="contact" class="min-h-screen md:snap-start flex items-center bg-white gap-3">
       <div class="w-full max-w-3xl mx-auto px-6 py-20">
 
         <!-- Headshot above heading -->
