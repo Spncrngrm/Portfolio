@@ -8,10 +8,10 @@
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Animate.css (optional) -->
+  <!-- Animate.css -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
-  <!-- (Optional) GSAP + ScrollTrigger -->
+  <!-- GSAP + ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
@@ -22,7 +22,7 @@
     /* Applied on <main> with Tailwind utilities: h-screen overflow-y-scroll snap-y snap-mandatory */
     /* Each child section/header uses snap-start */
 
-    /* === Tiny framework-free carousel (drop-in) === */
+    /* === Tiny framework-free carousel === */
     .carousel { outline:none; }
     .carousel-viewport { position:relative; width:100%; overflow:hidden; border-radius:0.5rem; }
     .carousel-viewport::before { content:""; display:block; padding-top:56.25%; } /* 16:9 default */
@@ -94,24 +94,24 @@
     <!-- About Me -->
     <section id="about" class="py-20 bg-gray-100 min-h-screen flex flex-col justify-center snap-start">
       <div class="max-w-7xl mx-auto grid md:grid-cols-[2.5fr_1.5fr] gap-16 px-6">
-        
+
         <!-- Left: Headshot + Text -->
         <div class="flex flex-col items-center text-center">
           <!-- Headshot -->
           <img src="images/headshot.png" alt="Spencer Ingram Headshot"
                class="w-48 h-48 md:w-64 md:h-64 object-cover rounded-full shadow-lg border-4 border-white mb-6" />
-          
+
           <!-- Heading -->
           <h2 class="text-3xl font-bold mb-4">About Me</h2>
-          
+
           <!-- Paragraph -->
           <p class="text-gray-700 mb-6 max-w-2xl">
             I’m a Computer Engineering student at the University of Waterloo, a varsity volleyball athlete,
-            and a member of UW Rocketry’s electrical subteam. I chose computer engineering because I have 
+            and a member of UW Rocketry’s electrical subteam. I chose computer engineering because I have
             always been impressed by how code and hardware work together. PCB's are my latest fixation. When I am
             not studying or playing volleyball, I love to spend time hiking or camping.
           </p>
-          
+
           <!-- Testimonial -->
           <blockquote class="mt-6 italic text-gray-600 max-w-2xl">
             “What stood out most was Spencer’s eagerness to grow. He not only met every requirement
@@ -121,18 +121,18 @@
             <br><span class="block mt-2 text-sm">— Bruce Louie, Product Development Manager at Pacesetter</span>
           </blockquote>
         </div>
-        
-        <!-- Right: Wordcloud -->
-        <div class="flex items-center justify-end">
+
+        <!-- Right: Wordcloud (feature flag: hide on mobile) -->
+        <div class="hidden md:flex items-center justify-end">
           <img src="images/wordcloud.png" alt="Skills Wordcloud"
                class="max-w-sm md:max-w-sm lg:max-w-xs" />
         </div>
-        
+
       </div>
     </section>
 
-    <!-- Projects Gallery (clean 3×3, square crops) -->
-    <section  id="projects" class="py-20 bg-white min-h-screen snap-start flex flex-col justify-center">
+    <!-- Projects Gallery (feature flag: hide on mobile) -->
+    <section id="projects" class="hidden md:flex py-20 bg-white min-h-screen snap-start flex-col justify-center">
       <h2 class="text-3xl font-bold text-center mb-10">Experience & Projects</h2>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 max-w-6xl mx-auto">
@@ -219,11 +219,11 @@
         <div class="w-full md:w-1/2">
           <h3 class="text-2xl font-bold mb-3">Pacesetter Co-op</h3>
           <p class="text-gray-700 leading-relaxed">
-            I joined to modernize a production Angular app: migrating from v14 → v19 and untangle deprecated APIs. 
-            I also added theming (including dark mode). While shipping UI work, I also got pulled into the lab side: 
-            reading EM-MWD data, helping triage PCB repairs, and improving the hand-off between firmware changes 
-            and bench validation. The work term was especially insightful because I had the opportunity to work with 
-            a codebase used to create and monitor electromagnetic tools, and then design directly with said technicians 
+            I joined to modernize a production Angular app: migrating from v14 → v19 and untangle deprecated APIs.
+            I also added theming (including dark mode). While shipping UI work, I also got pulled into the lab side:
+            reading EM-MWD data, helping triage PCB repairs, and improving the hand-off between firmware changes
+            and bench validation. The work term was especially insightful because I had the opportunity to work with
+            a codebase used to create and monitor electromagnetic tools, and then design directly with said technicians
             and tools. During my last month, I also improved some algorithms and created a system to stifle electromagnetic noise.
           </p>
           <p class="mt-4 text-sm text-gray-600"><strong>Highlights:</strong> Component library cleanup • PCB repair checklists • Faster restore flow • EM tools</p>
@@ -247,10 +247,10 @@
         <div class="w-full md:w-1/2">
           <h3 class="text-2xl font-bold mb-3">Varsity Volleyball</h3>
           <p class="text-gray-700 leading-relaxed">
-            Volleyball keeps my analytical skills sharp. One of the pillars of our system is preparation. 
-            Since things happen fast on the court, we have to be prepared. We watch film and game plan 
-            for each opponent, and reflect heavily on each practice. We set goals each Monday, and work towards 
-            them throughout the week. My point is: we build good habits when training, and that has 
+            Volleyball keeps my analytical skills sharp. One of the pillars of our system is preparation.
+            Since things happen fast on the court, we have to be prepared. We watch film and game plan
+            for each opponent, and reflect heavily on each practice. We set goals each Monday, and work towards
+            them throughout the week. My point is: we build good habits when training, and that has
             translated into my academic and everyday life.
           </p>
           <p class="mt-4 text-sm text-gray-600"><strong>Skills:</strong> Leadership, feedback loops, fast problem decomposition, planning, goal setting, team systems</p>
@@ -277,8 +277,8 @@
         <div class="w-full md:w-1/2">
           <h3 class="text-2xl font-bold mb-3">UW Rocketry</h3>
           <p class="text-gray-700 leading-relaxed">
-            On the electrical subteam, I help with sensor testing, wiring harness layouts, and bringing up PCBs for avionics. 
-            I enjoy validating boards: schematic review, continuity check, power-up in stages, then firmware smoke tests. 
+            On the electrical subteam, I help with sensor testing, wiring harness layouts, and bringing up PCBs for avionics.
+            I enjoy validating boards: schematic review, continuity check, power-up in stages, then firmware smoke tests.
             The best part is translating “this pin reads weird” into a design that fixes something that would have failed.
           </p>
           <p class="mt-4 text-sm text-gray-600"><strong>Tech:</strong> STM32, I²C/SPI/UART, level shifting, conformal coating basics, harness strain relief</p>
@@ -295,8 +295,8 @@
         <div class="w-full md:w-1/2">
           <h3 class="text-2xl font-bold mb-3">3D Printer</h3>
           <p class="text-gray-700 leading-relaxed">
-            Built and set up a hobby printer into a dependable tool. I calibrated e-steps and flow, and set up profiles 
-            for PLA, PETG, and ASA. This 3d printer was fully operational just before I graduated grade 10, 
+            Built and set up a hobby printer into a dependable tool. I calibrated e-steps and flow, and set up profiles
+            for PLA, PETG, and ASA. This 3d printer was fully operational just before I graduated grade 10,
             and is currently operating in my high school.
           </p>
           <p class="mt-4 text-sm text-gray-600"><strong>Tools:</strong> Cura/PrusaSlicer, callipers, bed levelling, design in Fusion 360</p>
@@ -319,8 +319,8 @@
         <div class="w-full md:w-1/2">
           <h3 class="text-2xl font-bold mb-3">Laser Cutter</h3>
           <p class="text-gray-700 leading-relaxed">
-            I created the user interface by connecting the shop’s laser cutter computer to the other desktops in my school 
-            so students could export from Adobe Illustrator and upload their files directly. Instead of carrying USB sticks 
+            I created the user interface by connecting the shop’s laser cutter computer to the other desktops in my school
+            so students could export from Adobe Illustrator and upload their files directly. Instead of carrying USB sticks
             back and forth, the shop PC pulled jobs straight from a shared folder, making the process smoother and cutting downtime.
           </p>
           <p class="mt-4 text-sm text-gray-600"><strong>Tools:</strong> Windows file sharing, Adobe Illustrator, LightBurn, basic IT setup and documentation</p>
@@ -347,8 +347,8 @@
           <h3 class="text-2xl font-bold mb-3">Temperature Sensor</h3>
           <p class="text-gray-700 leading-relaxed">
             Prototyped a low-power sensor with a microcontroller and digital sensor (and a thermistor version for fun).
-            I wrote a simple moving-average filter, added calibration against a reference thermometer, and designed a 
-            LED dot matrix display to show the results. As an extra challenge, I decided to navigate the individual diodes 
+            I wrote a simple moving-average filter, added calibration against a reference thermometer, and designed a
+            LED dot matrix display to show the results. As an extra challenge, I decided to navigate the individual diodes
             within the LED matrix instead of using a driver. It was a fun added component to the project.
           </p>
           <p class="mt-4 text-sm text-gray-600"><strong>Stack:</strong> Arduino/STM32, DS18B20/NTC, voltage dividers, basic filtering, matrix mapping</p>
@@ -371,7 +371,7 @@
           <h3 class="text-2xl font-bold mb-3">Banking Site</h3>
           <p class="text-gray-700 leading-relaxed">
             Built a small web app with auth, accounts, and transactions. I focused on clarity—zero-friction forms,
-            forgiving validation, and tables and charts that were easily understood. I also designed a simplified 
+            forgiving validation, and tables and charts that were easily understood. I also designed a simplified
             DES (Data Encryption Standard) algorithm for the application, which was my favourite part.
           </p>
           <p class="mt-4 text-sm text-gray-600"><strong>Skills:</strong> HTML/CSS/JS, local JSON / mock API, form validation, DES Encryption</p>
@@ -398,10 +398,10 @@
         <div class="w-full md:w-1/2">
           <h3 class="text-2xl font-bold mb-3">Fishing Game</h3>
           <p class="text-gray-700 leading-relaxed">
-            Created a fishing-themed game in Java to teach searching and sorting algorithms in a visual and engaging way. 
-            Instead of static textbook examples, players see “fish” representing data elements swim across the screen, 
-            while algorithms like gnome sort, bubble sort, insertion sort, and champagne sort play out in real time. 
-            It shows the logic step-by-step, making the learning process more intuitive and interactive. 
+            Created a fishing-themed game in Java to teach searching and sorting algorithms in a visual and engaging way.
+            Instead of static textbook examples, players see “fish” representing data elements swim across the screen,
+            while algorithms like gnome sort, bubble sort, insertion sort, and champagne sort play out in real time.
+            It shows the logic step-by-step, making the learning process more intuitive and interactive.
             I used this to teach while tutoring high school CS.
           </p>
           <p class="mt-4 text-sm text-gray-600"><strong>Focus:</strong> Java graphics, algorithm visualization, interactive education</p>
@@ -421,8 +421,8 @@
         <div class="w-full md:w-1/2">
           <h3 class="text-2xl font-bold mb-3">Rubik’s Cube Robot</h3>
           <p class="text-gray-700 leading-relaxed">
-            I designed a simple jig and drive to grip and rotate the cube, then experimented with a solver pipeline: 
-            detect stickers, map colours to a state, run a layer-based or Kociemba-style solver, and execute moves. 
+            I designed a simple jig and drive to grip and rotate the cube, then experimented with a solver pipeline:
+            detect stickers, map colours to a state, run a layer-based or Kociemba-style solver, and execute moves.
             Getting from “works once” to “works reliably” taught me to add homing, end-stops, and clear recovery states.
           </p>
           <p class="mt-4 text-sm text-gray-600"><strong>Tech:</strong> Servos/steppers, limit switches, basic CV for colour detection, search algorithms</p>
@@ -443,11 +443,11 @@
         </div>
       </div>
     </div>
-    
-    <!-- Contact (snap page, redesigned) -->
+
+    <!-- Contact -->
     <section id="contact" class="min-h-screen snap-start flex items-center bg-white gap-3">
       <div class="w-full max-w-3xl mx-auto px-6 py-20">
-        
+
         <!-- Headshot above heading -->
         <div class="flex justify-center mb-6">
           <img src="images/headshot.png" alt="Spencer Ingram Headshot"
@@ -494,7 +494,7 @@
     </section>
 
 
-    <!-- Slim footer (keeps your minimal vibe) -->
+    <!-- Slim footer -->
     <footer class="py-6 text-center bg-gray-950 text-gray-400">
       <p>&copy; 2025 Spencer Ingram.</p>
     </footer>
