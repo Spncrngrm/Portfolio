@@ -908,7 +908,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
               <div class="work-story__label"><span>01</span><small>REPORTING</small></div>
               <div class="work-story__body">
                 <h4>Rebuilding LAS reporting</h4>
-                <p>I overhauled Omni’s LAS reporting workflow so engineers could generate depth-bounded reports across multiple drilling runs, choose the curves and well context they needed, include PWD and temperature data, and merge gamma-memory measurements into the final output.</p>
+                <p>I created Omni’s LAS reporting software so users could generate depth-bounded reports across multiple drilling runs, choose the curves and well context they needed, include all sorts of data, and merge gamma-memory measurements into the final output.</p>
                 <p>I also worked heavily on performance. Reporting more than 10,000 metres of well data had taken about 25 seconds in the previous software. My implementation brought the average generation time down to roughly 6 seconds.</p>
 
                 <div class="metric-visual" aria-label="LAS report generation improved from 25 seconds to about 6 seconds">
@@ -927,8 +927,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
               <div class="work-story__label"><span>02</span><small>TOOL TESTING</small></div>
               <div class="work-story__body">
                 <h4>Magnetics Test</h4>
-                <p>I built Omni’s Magnetics Test workflow for validating downhole MWD hardware. The new implementation replaced placeholder and legacy survey values with live CAN/MPT measurements and surfaced the sensor data engineers use when checking tool performance.</p>
-                <p>This meant translating a specialized hardware-testing workflow into something that fit cleanly into the new application.</p>
+                <p>I built the Magnetics Test workflow in Omni around the CAN/MPT data coming from the MWD tool. My work involved identifying the measurements needed for the test, wiring that data into the new ViewModel and page, and organizing it into a neat screen. This enabled engineers to use the application as part of the tool-validation process, rather than having to interpret the lower-level tool output.</p>
               </div>
 
               <div class="signal-diagram" aria-label="Conceptual data path from downhole MWD hardware to the Magnetics Test interface">
@@ -946,8 +945,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
               <div class="work-story__label"><span>03</span><small>FIELD WORKFLOW</small></div>
               <div class="work-story__body">
                 <h4>Synchronization and offline field use</h4>
-                <p>I worked on Omni’s synchronization with PRIME and its offline-data workflows, using API-based job and data transfer together with local persistence. Field users could download the jobs they needed, continue working without a connection, and reconcile their drilling data once connectivity was available again.</p>
-                <p>One issue I fixed involved newly downloaded jobs being stored correctly but not appearing in Configuration because the page retained old state. I changed the refresh behaviour so downloaded jobs became available immediately when the application shell reopened.</p>
+                <p>I worked on both sides of the API connection between PRIME and Omni. In redline-omni-api, I added authenticated ASP.NET Core endpoints, Entity Framework queries, and response models to expose PRIME data in the structure Omni needed. In the desktop app, I added client methods to make bearer-authenticated requests, deserialize the responses, map PRIME IDs and related entities into Omni’s domain models, and persist them through the local repository and Entity Framework layer.</p>
+                <p>I also worked in the job-sync pipeline itself, mapping PRIME responses back into Omni objects such as jobs, runs, tools, well legs, and related data while keeping their PRIME identities intact.</p>
               </div>
 
               <div class="offline-diagram" aria-label="Offline field workflow diagram">
@@ -1022,7 +1021,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
               <p class="prime-thread__number">B</p>
               <h4>MWD tool work</h4>
               <p>Alongside my main work on PRIME, I spent time working directly with electromagnetic MWD tools in the shop. I downloaded tool memory, looked for patterns in field failures, and worked with the EM sensors themselves while testing software I wrote to reduce noise in the sensor data.</p>
-              <p>That work let me test the processing against real tool behaviour rather than only recorded data. The approach is now planned for incorporation into Redline Omni.</p>
+              <p>That work let me test the processing against real tool behaviour rather than only recorded data.</p>
             </section>
           </div>
         </article>
@@ -1097,7 +1096,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
             <h2>UW Rocketry</h2>
             <p class="subrole">Electrical Subteam</p>
           </div>
-          <p class="section-lede">I spent more than a year on UW Rocketry’s electrical subteam, where I was exposed to the team’s avionics, sensors, wiring, and custom PCBs. I was selected for PCB testing and validation work, and the experience helped push my interests toward embedded systems and hardware.</p>
+          <p class="section-lede">I joined UW Rocketry’s electrical subteam in first year, I was selected for PCB testing and validation work, and the experience helped push my interests toward embedded systems and hardware. In second year, I helped design a PCB used for active vibration control, which was used in the record breaking launch of the "Polaris."</p>
         </header>
 
         <div class="media-slot media-slot--rocketry">
@@ -1130,8 +1129,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
           <div class="about-copy">
             <p class="about-copy__lead">I’m studying Computer Engineering at the University of Waterloo.</p>
-            <p>Over two co-op terms at Pacesetter, I worked first on PRIME in Angular and TypeScript, then on Redline Omni in C#/.NET. That gave me experience working in large production codebases, shipping software that people actually use, and debugging problems that matter outside a classroom.</p>
-            <p>I’m most interested in moving closer to embedded systems, firmware, and hardware. I’ve worked with STM32 microcontrollers, spent time on UW Rocketry’s electrical subteam, and I like projects where I can understand both what the software is doing and what is happening physically around it.</p>
+            <p>I’m a Computer Engineering student at the University of Waterloo, a varsity volleyball athlete, and a member of UW Rocketry’s electrical subteam. I chose computer engineering because I’ve always been interested in how software and hardware come together, and lately I’ve been specifically interested in embedded systems, firmware, and PCB development.</p>
+            <p>Outside of engineering, tinkering, and volleyball, I like hiking, camping, and generally being outside whenever I get the chance.</p>
           </div>
         </div>
 
@@ -1140,7 +1139,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
           <div class="skill-row"><strong>Programming</strong><p>C# · C · C++ · TypeScript · JavaScript · Python · Java · SQL</p></div>
           <div class="skill-row"><strong>Frameworks & software</strong><p>.NET · WinUI 3 · Entity Framework · Angular · Node.js</p></div>
           <div class="skill-row"><strong>Embedded & engineering</strong><p>STM32 · Arduino · Microcontrollers · Sensor Integration · Soldering</p></div>
-          <div class="skill-row"><strong>Tools</strong><p>Git · Azure DevOps · MATLAB · SolidWorks · Fusion 360 · ANSYS</p></div>
+          <div class="skill-row"><strong>Tools</strong><p>Git · Azure DevOps · MATLAB · SolidWorks · Fusion 360 </p></div>
         </div>
       </div>
     </section>
