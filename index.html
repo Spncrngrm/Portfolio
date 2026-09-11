@@ -680,20 +680,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .sync-run:disabled { cursor: default; opacity: .55; }
 
 .work-details { margin-top: 34px; border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
-.work-details summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 21px 0; list-style: none; }
-.work-details summary::-webkit-details-marker { display: none; }
-.work-details summary span { font-size: 1.02rem; font-weight: 700; }
-.work-details summary small { font: .62rem/1 var(--mono); color: var(--muted); }
-.work-details[open] summary small { visibility: hidden; }
-.work-details[open] summary small::after { content: "Close list"; visibility: visible; float: right; }
+.work-details__heading { padding: 21px 0; font-size: 1.02rem; font-weight: 700; }
 .work-details__grid { display: grid; grid-template-columns: repeat(3, 1fr); padding: 0 0 30px; }
 .work-details__grid span { padding: 12px 18px 12px 0; border-top: 1px solid var(--line); font-size: .88rem; color: var(--ink-soft); }
-
-.term-connector { display: flex; align-items: center; gap: 16px; margin: 110px 0 64px; font: 600 .62rem/1 var(--mono); color: var(--muted); }
-.term-connector i { flex: 1; height: 1px; background: var(--line-dark); position: relative; }
-.term-connector i::before, .term-connector i::after { content: ""; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line-dark); }
-.term-connector i::before { left: 0; }
-.term-connector i::after { right: 0; }
 
 .case-header--prime { border-top-color: var(--ink); }
 .prime-opening { grid-template-columns: .95fr 1.05fr; }
@@ -1215,25 +1204,21 @@ button, a { -webkit-tap-highlight-color: transparent; }
             </article>
           </div>
 
-          <details class="work-details">
-            <summary><span>Other work in Omni</span><small>Open list</small></summary>
+          <div class="work-details">
+            <div class="work-details__heading">Other work in Omni</div>
             <div class="work-details__grid">
               <span>LAS export and depth-range correctness</span>
               <span>GeoPlot and engineering-data visualization</span>
               <span>Job, run, and tool navigation</span>
               <span>Well-leg and hole-section synchronization</span>
-              <span>Gamma and diagnostics workflows</span>
-              <span>Configuration pages</span>
+              <span>Gamma and tool diagnostics workflows</span>
+              <span>Tool testing and data interpreters</span>
+              <span>Data editing interface</span>
               <span>Notifications and text-selection behaviour</span>
-              <span>Theme and UI fixes</span>
               <span>Loading and performance work</span>
             </div>
-          </details>
+          </div>
         </article>
-
-        <div class="term-connector" aria-hidden="true">
-          <span>2026</span><i></i><span>2025</span>
-        </div>
 
         <article class="prime-case" id="prime">
           <header class="case-header case-header--prime">
