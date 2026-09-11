@@ -175,6 +175,23 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .trace-rail a.is-active::before { background: var(--accent); border-color: var(--accent); transform: scale(1.35); }
 .trace-rail a.is-active span { color: var(--accent-dark); }
 
+.trace-rail.is-on-dark {
+  left: 12px;
+  width: 104px;
+  padding: 16px 12px;
+  background: rgba(16,18,20,.82);
+  border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(12px);
+}
+.trace-rail.is-on-dark .trace-rail__line { left: 16px; top: 24px; bottom: 24px; background: #454a4d; }
+.trace-rail.is-on-dark .trace-rail__line span { background: #ff7657; }
+.trace-rail.is-on-dark a { color: #aeb3b5; }
+.trace-rail.is-on-dark a::before { background: var(--night); border-color: #747a7d; }
+.trace-rail.is-on-dark a span { color: #747a7d; }
+.trace-rail.is-on-dark a.is-active { color: var(--white); }
+.trace-rail.is-on-dark a.is-active::before { background: #ff7657; border-color: #ff7657; }
+.trace-rail.is-on-dark a.is-active span { color: #ff9276; }
+
 .hero {
   min-height: 100svh;
   position: relative;
@@ -466,27 +483,201 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .metric-visual small { display: block; margin-top: 15px; font: .61rem/1.4 var(--mono); color: var(--muted); }
 
 .work-story--magnetics, .work-story--sync { grid-template-columns: 96px minmax(0, .92fr) minmax(430px, .92fr); }
-.signal-diagram, .offline-diagram { align-self: stretch; padding: 40px; border-left: 1px solid var(--line); background: var(--night); color: white; }
-.signal-diagram { display: flex; flex-direction: column; justify-content: center; }
-.signal-diagram div { display: grid; grid-template-columns: 34px 1fr; gap: 4px 12px; align-items: center; }
-.signal-diagram div span { grid-row: 1 / span 2; font: 600 .58rem/1 var(--mono); color: #909598; }
-.signal-diagram div strong { font-size: 1rem; }
-.signal-diagram div small { font: .6rem/1.2 var(--mono); color: #969b9e; }
-.signal-diagram > i { display: block; width: 1px; height: 34px; margin: 7px 0 7px 16px; background: #555b5f; position: relative; }
-.signal-diagram > i::after { content: ""; position: absolute; left: -3px; bottom: -1px; width: 7px; height: 7px; border-right: 1px solid var(--accent); border-bottom: 1px solid var(--accent); transform: rotate(45deg); }
+.media-slot--magnetics { min-height: 100%; border: 0; border-left: 1px solid var(--line); }
 
-.offline-diagram { display: grid; grid-template-columns: 1fr 90px 1fr 110px 1fr; align-items: center; gap: 10px; }
-.offline-node { padding: 22px 16px; border: 1px solid #4e5356; text-align: center; }
-.offline-node span { display: block; font: 700 .78rem/1 var(--mono); }
-.offline-node small { display: block; margin-top: 7px; color: #969b9e; font: .57rem/1.3 var(--mono); }
-.offline-node--prime { border-color: #6d7174; }
-.offline-node--field { border-color: var(--accent); }
-.offline-path { text-align: center; }
-.offline-path span { display: block; margin-bottom: 9px; font: .52rem/1 var(--mono); color: #969b9e; }
-.offline-path i { display: block; height: 1px; background: #656a6d; position: relative; }
-.offline-path i::after { content: ""; position: absolute; right: -1px; top: -3px; width: 6px; height: 6px; border-right: 1px solid var(--accent); border-top: 1px solid var(--accent); transform: rotate(45deg); }
-.offline-path--dashed i { background: repeating-linear-gradient(90deg, #5f6467 0 7px, transparent 7px 13px); }
-.offline-path--dashed span { color: #dc806c; }
+.sync-lab {
+  align-self: stretch;
+  padding: 30px;
+  border-left: 1px solid var(--line);
+  background: var(--night);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 430px;
+}
+.sync-lab__head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid #3b4042;
+}
+.sync-lab__kicker {
+  display: block;
+  margin-bottom: 7px;
+  font: 650 .57rem/1 var(--mono);
+  letter-spacing: .08em;
+  color: #d67861;
+}
+.sync-lab__head strong { font-size: 1.25rem; letter-spacing: -.025em; }
+.sync-lab__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border: 1px solid #4b5053;
+  font: 650 .56rem/1 var(--mono);
+  color: #b5babc;
+  white-space: nowrap;
+}
+.sync-lab__status i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #65c486;
+  box-shadow: 0 0 0 4px rgba(101,196,134,.1);
+}
+.sync-lab__status.is-synced { color: #d9eee0; border-color: rgba(101,196,134,.5); }
+.sync-lab__systems {
+  display: grid;
+  grid-template-columns: 1fr minmax(90px, .7fr) 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 24px 0;
+}
+.sync-system {
+  padding: 17px 16px;
+  border: 1px solid #4e5356;
+  background: #15181a;
+}
+.sync-system small, .sync-system span {
+  display: block;
+  font: .54rem/1.35 var(--mono);
+  color: #868c8f;
+}
+.sync-system strong {
+  display: block;
+  margin: 7px 0 5px;
+  font-size: .9rem;
+}
+.sync-system--local { border-color: #7c4a3f; }
+.sync-transport { min-width: 0; text-align: center; }
+.sync-transport__label {
+  display: block;
+  margin-bottom: 9px;
+  font: .5rem/1 var(--mono);
+  color: #81878a;
+  white-space: nowrap;
+}
+.sync-transport__line {
+  position: relative;
+  height: 1px;
+  background: #555b5e;
+}
+.sync-transport__line::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -3px;
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid #d67861;
+  border-top: 1px solid #d67861;
+  transform: rotate(45deg);
+}
+.sync-transport__packet {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--signal);
+  box-shadow: 0 0 12px rgba(240,90,53,.7);
+  transform: translate(-50%,-50%);
+  opacity: 0;
+}
+.sync-lab.is-running .sync-transport__packet {
+  opacity: 1;
+  animation: sync-travel 2.7s cubic-bezier(.2,.72,.25,1) forwards;
+}
+@keyframes sync-travel {
+  0% { left: 0%; }
+  100% { left: 100%; }
+}
+.sync-lab__pipeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #353a3c;
+  border-left: 1px solid #353a3c;
+}
+.sync-stage {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 9px;
+  min-height: 74px;
+  padding: 14px 12px;
+  border-right: 1px solid #353a3c;
+  border-bottom: 1px solid #353a3c;
+  color: #777d80;
+  transition: background .18s ease, color .18s ease, border-color .18s ease;
+}
+.sync-stage > span {
+  font: 650 .5rem/1 var(--mono);
+  color: #62686b;
+  padding-top: 2px;
+}
+.sync-stage strong {
+  display: block;
+  font-size: .72rem;
+  color: #aeb3b5;
+}
+.sync-stage small {
+  display: block;
+  margin-top: 4px;
+  font: .5rem/1.25 var(--mono);
+  color: #6f7578;
+}
+.sync-stage.is-active {
+  background: #1d2022;
+  color: var(--white);
+  box-shadow: inset 3px 0 0 var(--signal);
+}
+.sync-stage.is-active > span { color: #ff9276; }
+.sync-stage.is-active strong { color: var(--white); }
+.sync-stage.is-active small { color: #aeb3b5; }
+.sync-stage.is-done strong { color: #cbd0d1; }
+.sync-stage.is-done > span { color: #65c486; }
+
+.sync-lab__footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: end;
+  padding-top: 20px;
+}
+.sync-payload {
+  min-width: 0;
+  padding-left: 12px;
+  border-left: 2px solid #42484b;
+}
+.sync-payload code {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font: 650 .58rem/1.3 var(--mono);
+  color: #e2e5e6;
+}
+.sync-payload small {
+  display: block;
+  margin-top: 5px;
+  font: .52rem/1.35 var(--mono);
+  color: #7f8588;
+}
+.sync-run {
+  min-height: 40px;
+  padding: 0 13px;
+  border: 1px solid #666c6f;
+  background: transparent;
+  color: var(--white);
+  font: 650 .62rem/1 var(--mono);
+  cursor: pointer;
+}
+.sync-run:hover, .sync-run:focus-visible { border-color: var(--signal); color: #ff9b7e; }
+.sync-run:disabled { cursor: default; opacity: .55; }
 
 .work-details { margin-top: 34px; border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
 .work-details summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 21px 0; list-style: none; }
@@ -547,12 +738,17 @@ button, a { -webkit-tap-highlight-color: transparent; }
   border-radius: 50%;
   background: #262a2c;
   border: 1px solid #383d3f;
-  box-shadow: inset 0 0 0 4px rgba(0,0,0,.12);
-  transition: background .07s linear, box-shadow .07s linear, opacity .07s linear;
+  box-shadow: none;
+  transition: background .07s linear, box-shadow .07s linear, opacity .07s linear, transform .07s linear, border-color .07s linear;
 }
-.matrix-led.is-on { background: var(--signal); border-color: #fd825f; box-shadow: 0 0 16px rgba(240,90,53,.72), inset 0 0 0 3px rgba(255,255,255,.13); }
-.matrix-led.is-muted { opacity: .24; }
-.matrix-led.is-scan-row { box-shadow: 0 0 0 1px rgba(255,255,255,.22); }
+.matrix-led.is-on {
+  background: var(--signal);
+  border-color: #ff8e70;
+  box-shadow: 0 0 14px rgba(240,90,53,.68), 0 0 3px rgba(255,150,120,.4);
+}
+.matrix-led.is-muted { opacity: .22; }
+.matrix-led.is-scan-row { transform: scale(1.025); }
+.matrix-led.is-on.is-scan-row { border-color: #ffad96; }
 .matrix-panel__labels { position: absolute; right: 0; top: 20px; bottom: 20px; display: flex; flex-direction: column; justify-content: space-between; font: .5rem/1 var(--mono); color: #777d80; }
 .matrix-explain p { color: #bbc0c2; font-size: .93rem; }
 .matrix-signal { display: grid; grid-template-columns: auto 1fr auto 1fr auto; align-items: center; gap: 8px; margin-bottom: 26px; }
@@ -602,8 +798,32 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .volleyball-copy p { max-width: 880px; margin: 0; font-size: clamp(1.02rem, 1.55vw, 1.25rem); line-height: 1.6; color: #d2d5d6; }
 
 .about-section { padding: 145px 0; }
-.about-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 100px; }
+.about-grid { display: grid; grid-template-columns: .48fr 1.52fr; gap: 72px; align-items: start; }
 .about-grid h2 { margin: 18px 0 0; font-size: clamp(4rem, 7vw, 7rem); line-height: .9; letter-spacing: -.065em; }
+.about-content { display: grid; grid-template-columns: minmax(240px, .72fr) minmax(0, 1.28fr); gap: 52px; align-items: start; }
+.about-photo {
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+  border: 1px solid var(--line-dark);
+  background: #ddd8ce;
+}
+.about-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about-photo__fallback {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #ddd8ce;
+  color: #77736b;
+}
+.about-photo__fallback strong { font: 700 .72rem/1 var(--mono); letter-spacing: .09em; }
 .about-copy p { margin: 0 0 20px; max-width: 760px; color: var(--ink-soft); }
 .about-copy__lead { font-size: clamp(1.55rem, 2.6vw, 2.45rem); line-height: 1.32; letter-spacing: -.035em; color: var(--ink) !important; }
 .skills-board { margin-top: 92px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
@@ -654,8 +874,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .system-map { transform: scale(.92); transform-origin: center; }
   .trace-rail { display: none; }
   .work-story, .work-story--magnetics, .work-story--sync { grid-template-columns: 76px 1fr; }
-  .media-slot--story, .signal-diagram, .offline-diagram { grid-column: 2; border-left: 0; border-top: 1px solid var(--line); min-height: 330px; }
-  .offline-diagram { grid-template-columns: 1fr 70px 1fr 90px 1fr; }
+  .media-slot--story, .media-slot--magnetics, .sync-lab { grid-column: 2; border-left: 0; border-top: 1px solid var(--line); min-height: 330px; }
+  .sync-lab { min-height: 430px; }
 }
 
 @media (max-width: 940px) {
@@ -670,6 +890,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .system-node--rocketry { top: 65%; left: 40%; }
   .system-node--volleyball { top: 83%; left: 55%; }
   .section-intro--split, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 42px; }
+  .about-content { grid-template-columns: minmax(240px, .72fr) minmax(0, 1.28fr); }
   .section-lede { justify-self: start; }
   .omni-opening, .prime-opening, .embedded-workbench { grid-template-columns: 1fr; }
   .impact-strip { grid-template-columns: 1fr; }
@@ -717,11 +938,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .work-story__label { padding: 25px 12px; }
   .work-story__label span { font-size: 1.35rem; }
   .work-story__body { padding: 28px 22px 34px; }
-  .media-slot--story, .signal-diagram, .offline-diagram { grid-column: 1 / -1; }
-  .offline-diagram { grid-template-columns: 1fr; gap: 12px; }
-  .offline-path { min-height: 54px; display: grid; place-items: center; }
-  .offline-path i { width: 1px; height: 28px; }
-  .offline-path i::after { right: -2px; top: auto; bottom: 0; transform: rotate(135deg); }
+  .media-slot--story, .media-slot--magnetics, .sync-lab { grid-column: 1 / -1; }
+  .sync-lab { padding: 22px; }
+  .sync-lab__systems { grid-template-columns: 1fr 62px 1fr; gap: 8px; }
+  .sync-transport__label { font-size: .45rem; }
+  .sync-lab__pipeline { grid-template-columns: repeat(2, 1fr); }
+  .sync-lab__footer { grid-template-columns: 1fr; }
+  .sync-run { width: 100%; }
+  .about-content { grid-template-columns: 1fr; gap: 28px; }
+  .about-photo { min-height: 430px; }
   .work-details__grid { grid-template-columns: 1fr; }
   .testimonial footer { flex-direction: column; }
   .sensor-photo__frame { min-height: 380px; }
@@ -930,31 +1155,62 @@ button, a { -webkit-tap-highlight-color: transparent; }
                 <p>I built the Magnetics Test workflow in Omni around the CAN/MPT data coming from the MWD tool. My work involved identifying the measurements needed for the test, wiring that data into the new ViewModel and page, and organizing it into a neat screen. This enabled engineers to use the application as part of the tool-validation process, rather than having to interpret the lower-level tool output.</p>
               </div>
 
-              <div class="signal-diagram" aria-label="Conceptual data path from downhole MWD hardware to the Magnetics Test interface">
-                <div><span>01</span><strong>MWD hardware</strong><small>Downhole tool</small></div>
-                <i aria-hidden="true"></i>
-                <div><span>02</span><strong>CAN / MPT</strong><small>Live measurements</small></div>
-                <i aria-hidden="true"></i>
-                <div><span>03</span><strong>Omni</strong><small>Magnetics Test</small></div>
-                <i aria-hidden="true"></i>
-                <div><span>04</span><strong>Engineer</strong><small>Validation</small></div>
+              <div class="media-slot media-slot--magnetics">
+                <div class="media-slot__fallback" aria-hidden="true"><strong>MAGNETICS</strong></div>
+                <img class="media-slot__image" src="images/magtest.png" alt="Redline Omni Magnetics Test interface" onerror="this.hidden=true" />
               </div>
             </article>
 
             <article class="work-story work-story--sync">
               <div class="work-story__label"><span>03</span><small>FIELD WORKFLOW</small></div>
               <div class="work-story__body">
-                <h4>Synchronization and offline field use</h4>
+                <h4>PRIME API and synchronization</h4>
                 <p>I worked on both sides of the API connection between PRIME and Omni. In redline-omni-api, I added authenticated ASP.NET Core endpoints, Entity Framework queries, and response models to expose PRIME data in the structure Omni needed. In the desktop app, I added client methods to make bearer-authenticated requests, deserialize the responses, map PRIME IDs and related entities into Omni’s domain models, and persist them through the local repository and Entity Framework layer.</p>
                 <p>I also worked in the job-sync pipeline itself, mapping PRIME responses back into Omni objects such as jobs, runs, tools, well legs, and related data while keeping their PRIME identities intact.</p>
               </div>
 
-              <div class="offline-diagram" aria-label="Offline field workflow diagram">
-                <div class="offline-node offline-node--prime"><span>PRIME</span><small>Remote data</small></div>
-                <div class="offline-path"><span>API</span><i aria-hidden="true"></i></div>
-                <div class="offline-node"><span>OMNI</span><small>Local persistence</small></div>
-                <div class="offline-path offline-path--dashed"><span>NO CONNECTION</span><i aria-hidden="true"></i></div>
-                <div class="offline-node offline-node--field"><span>FIELD</span><small>Continue working</small></div>
+              <div class="sync-lab" data-sync-lab aria-labelledby="sync-lab-title">
+                <div class="sync-lab__head">
+                  <div>
+                    <span class="sync-lab__kicker">INTERACTIVE API PATH</span>
+                    <strong id="sync-lab-title">PRIME ↔ Omni</strong>
+                  </div>
+                  <span class="sync-lab__status" data-sync-status><i aria-hidden="true"></i>Connected</span>
+                </div>
+
+                <div class="sync-lab__systems">
+                  <div class="sync-system">
+                    <small>SOURCE</small>
+                    <strong>PRIME API</strong>
+                    <span>ASP.NET Core</span>
+                  </div>
+                  <div class="sync-transport" aria-hidden="true">
+                    <span class="sync-transport__label">Bearer auth · JSON</span>
+                    <div class="sync-transport__line"><i class="sync-transport__packet"></i></div>
+                  </div>
+                  <div class="sync-system sync-system--local">
+                    <small>CLIENT</small>
+                    <strong>OMNI</strong>
+                    <span>Local persistence</span>
+                  </div>
+                </div>
+
+                <div class="sync-lab__pipeline" role="list" aria-label="Synchronization pipeline">
+                  <div class="sync-stage" data-sync-stage="0" role="listitem"><span>01</span><div><strong>Endpoint</strong><small>ASP.NET Core</small></div></div>
+                  <div class="sync-stage" data-sync-stage="1" role="listitem"><span>02</span><div><strong>Query</strong><small>Entity Framework</small></div></div>
+                  <div class="sync-stage" data-sync-stage="2" role="listitem"><span>03</span><div><strong>Response</strong><small>DTO / JSON</small></div></div>
+                  <div class="sync-stage" data-sync-stage="3" role="listitem"><span>04</span><div><strong>Client</strong><small>Bearer request</small></div></div>
+                  <div class="sync-stage" data-sync-stage="4" role="listitem"><span>05</span><div><strong>Map</strong><small>Domain models</small></div></div>
+                  <div class="sync-stage" data-sync-stage="5" role="listitem"><span>06</span><div><strong>Store</strong><small>Local EF layer</small></div></div>
+                </div>
+
+                <div class="sync-lab__footer">
+                  <div class="sync-payload" aria-live="polite">
+                    <code data-sync-code>GET /api/jobs/{id}</code>
+                    <small data-sync-detail>Ready to trace one download through the sync pipeline.</small>
+                  </div>
+                  <button class="sync-run" type="button" data-sync-run>Run sync</button>
+                </div>
               </div>
             </article>
           </div>
@@ -1127,10 +1383,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
             <h2>About</h2>
           </header>
 
-          <div class="about-copy">
-            <p class="about-copy__lead">I’m studying Computer Engineering at the University of Waterloo.</p>
-            <p>I’m a Computer Engineering student at the University of Waterloo, a varsity volleyball athlete, and a member of UW Rocketry’s electrical subteam. I chose computer engineering because I’ve always been interested in how software and hardware come together, and lately I’ve been specifically interested in embedded systems, firmware, and PCB development.</p>
-            <p>Outside of engineering, tinkering, and volleyball, I like hiking, camping, and generally being outside whenever I get the chance.</p>
+          <div class="about-content">
+            <div class="about-photo">
+              <div class="about-photo__fallback" aria-hidden="true"><strong>PORTRAIT</strong></div>
+              <img src="images/headshot.png" alt="Spencer Ingram" onerror="this.hidden=true" />
+            </div>
+            <div class="about-copy">
+              <p class="about-copy__lead">I’m studying Computer Engineering at the University of Waterloo.</p>
+              <p>I’m a Computer Engineering student at the University of Waterloo, a varsity volleyball athlete, and a member of UW Rocketry’s electrical subteam. I chose computer engineering because I’ve always been interested in how software and hardware come together, and lately I’ve been specifically interested in embedded systems, firmware, and PCB development.</p>
+              <p>Outside of engineering, tinkering, and volleyball, I like hiking, camping, and generally being outside whenever I get the chance.</p>
+            </div>
           </div>
         </div>
 
@@ -1205,7 +1467,14 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
       if (!visible) return;
       const id = visible.target.dataset.traceSection;
-      traceLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.traceLink === id));
+      traceLinks.forEach((link) => {
+        const active = link.dataset.traceLink === id;
+        link.classList.toggle('is-active', active);
+        if (active) link.setAttribute('aria-current', 'location');
+        else link.removeAttribute('aria-current');
+      });
+
+      rail?.classList.toggle('is-on-dark', id === 'volleyball' || id === 'contact');
     }, {
       rootMargin: '-28% 0px -52% 0px',
       threshold: [0.02, 0.15, 0.35, 0.6]
@@ -1352,6 +1621,86 @@ button, a { -webkit-tap-highlight-color: transparent; }
   });
 
   runNormal();
+
+  const syncLab = document.querySelector('[data-sync-lab]');
+  const syncRun = document.querySelector('[data-sync-run]');
+  const syncStatus = document.querySelector('[data-sync-status]');
+  const syncCode = document.querySelector('[data-sync-code]');
+  const syncDetail = document.querySelector('[data-sync-detail]');
+  const syncStages = [...document.querySelectorAll('[data-sync-stage]')];
+
+  if (syncLab && syncRun && syncStatus && syncCode && syncDetail && syncStages.length) {
+    const sequence = [
+      ['GET /api/jobs/{id}', 'Authenticated ASP.NET Core endpoint receives the request.'],
+      ['db.Jobs · Include(...)', 'Entity Framework loads the job and related data required by Omni.'],
+      ['JobResponse → JSON', 'The API shapes the result into the response model Omni expects.'],
+      ['HttpClient + Bearer token', 'Omni makes the authenticated request and deserializes the response.'],
+      ['PRIME IDs → Omni models', 'Response objects are mapped into jobs, runs, tools, well legs, and related domain models.'],
+      ['Repository.SaveChanges()', 'The mapped data is persisted through Omni’s local Entity Framework layer.']
+    ];
+
+    let syncTimer = null;
+
+    const resetSyncStages = () => {
+      syncStages.forEach((stage) => {
+        stage.classList.remove('is-active', 'is-done');
+      });
+    };
+
+    const runSync = () => {
+      if (syncTimer) clearInterval(syncTimer);
+
+      resetSyncStages();
+      syncLab.classList.remove('is-running');
+      void syncLab.offsetWidth;
+      syncLab.classList.add('is-running');
+
+      syncRun.disabled = true;
+      syncRun.textContent = 'Syncing…';
+      syncStatus.classList.remove('is-synced');
+      syncStatus.lastChild.textContent = 'Syncing';
+
+      let index = 0;
+
+      const showStage = () => {
+        syncStages.forEach((stage, stageIndex) => {
+          stage.classList.toggle('is-active', stageIndex === index);
+          stage.classList.toggle('is-done', stageIndex < index);
+        });
+
+        syncCode.textContent = sequence[index][0];
+        syncDetail.textContent = sequence[index][1];
+
+        if (index === sequence.length - 1) {
+          clearInterval(syncTimer);
+          syncTimer = null;
+
+          setTimeout(() => {
+            syncStages.forEach((stage) => {
+              stage.classList.remove('is-active');
+              stage.classList.add('is-done');
+            });
+            syncLab.classList.remove('is-running');
+            syncStatus.classList.add('is-synced');
+            syncStatus.lastChild.textContent = 'Synced';
+            syncCode.textContent = '200 OK · persisted locally';
+            syncDetail.textContent = 'The requested PRIME data is now mapped and stored in Omni.';
+            syncRun.disabled = false;
+            syncRun.textContent = 'Run again';
+          }, 430);
+
+          return;
+        }
+
+        index += 1;
+      };
+
+      showStage();
+      syncTimer = setInterval(showStage, 430);
+    };
+
+    syncRun.addEventListener('click', runSync);
+  }
 })();
 
 </script>
