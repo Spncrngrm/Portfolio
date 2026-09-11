@@ -348,19 +348,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .system-node--rocketry { left: 44%; top: 67%; }
 .system-node--volleyball { left: 61%; top: 85%; }
 
-.hero__facts {
-  position: relative;
-  z-index: 2;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--line-dark);
-  background: rgba(243,240,232,.82);
-}
-.hero__facts div { min-height: 84px; padding: 19px 26px; border-right: 1px solid var(--line); }
-.hero__facts div:last-child { border-right: 0; }
-.hero__facts strong { display: block; font-size: .82rem; }
-.hero__facts span { display: block; margin-top: 4px; font: .62rem/1.3 var(--mono); color: var(--muted); }
-
 .work-section { padding: 140px 0 150px; background: var(--paper); }
 .section-intro { margin-bottom: 92px; }
 .section-intro--split { display: grid; grid-template-columns: .85fr 1.15fr; gap: 90px; align-items: end; }
@@ -412,45 +399,26 @@ button, a { -webkit-tap-highlight-color: transparent; }
   background: #fbfaf6;
   min-height: 420px;
 }
-.media-slot__grid {
+.media-slot__image {
   position: absolute;
   inset: 0;
-  opacity: .5;
-  background-image:
-    linear-gradient(rgba(21,23,24,.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(21,23,24,.055) 1px, transparent 1px);
-  background-size: 32px 32px;
-}
-.media-slot::after {
-  content: "";
-  position: absolute;
-  inset: 18px;
-  border: 1px solid rgba(141,138,130,.45);
-  pointer-events: none;
-}
-.media-slot__chrome {
-  position: absolute;
-  top: 28px;
-  left: 32px;
   z-index: 2;
-  display: flex;
-  gap: 7px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.media-slot__chrome span { width: 7px; height: 7px; border-radius: 50%; border: 1px solid var(--line-dark); }
-.media-slot__content {
+.media-slot__fallback {
   position: absolute;
-  z-index: 3;
-  left: 50%;
-  top: 50%;
-  width: min(80%, 520px);
-  transform: translate(-50%,-50%);
-  text-align: center;
+  inset: 0;
   display: grid;
-  gap: 8px;
+  place-items: center;
+  background: #ddd8ce;
+  color: #77736b;
 }
-.media-slot__content strong { font: 700 .74rem/1.3 var(--mono); letter-spacing: .06em; }
-.media-slot__content span { font-size: .86rem; color: var(--muted); }
-.media-slot__content small { font: .62rem/1.4 var(--mono); color: var(--line-dark); }
+.media-slot__fallback strong {
+  font: 700 .72rem/1 var(--mono);
+  letter-spacing: .09em;
+}
 
 .impact-strip {
   display: grid;
@@ -561,10 +529,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .sensor-photo { margin: 0; display: flex; flex-direction: column; }
 .sensor-photo__frame { min-height: 560px; flex: 1; position: relative; overflow: hidden; background: #d8d4ca; border: 1px solid var(--line-dark); }
 .sensor-photo__frame img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-.sensor-photo__fallback { display: none; position: absolute; inset: 0; place-items: center; align-content: center; text-align: center; gap: 7px; padding: 40px; background: repeating-linear-gradient(-45deg, #e5e1d7 0 16px, #dedad0 16px 32px); }
+.sensor-photo__fallback { display: none; position: absolute; inset: 0; place-items: center; text-align: center; background: #ddd8ce; color: #77736b; }
 .sensor-photo__frame--missing .sensor-photo__fallback { display: grid; }
-.sensor-photo__fallback strong { font: 700 .72rem/1.2 var(--mono); }
-.sensor-photo__fallback span { max-width: 280px; font-size: .8rem; color: var(--muted); }
+.sensor-photo__fallback strong { font: 700 .72rem/1 var(--mono); letter-spacing: .09em; }
 .sensor-photo figcaption { padding: 10px 2px 0; font: .62rem/1.4 var(--mono); color: var(--muted); }
 
 .matrix-lab { background: var(--night); color: var(--white); border: 1px solid var(--night); padding: 34px; }
@@ -619,21 +586,16 @@ button, a { -webkit-tap-highlight-color: transparent; }
   mix-blend-mode: screen;
 }
 .volleyball-media { position: absolute; inset: 0; }
-.volleyball-media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,11,12,.96) 0, rgba(9,11,12,.57) 44%, rgba(9,11,12,.12) 100%); }
+.volleyball-media::after { content: ""; position: absolute; z-index: 2; inset: 0; background: linear-gradient(to top, rgba(9,11,12,.96) 0, rgba(9,11,12,.57) 44%, rgba(9,11,12,.12) 100%); }
+.volleyball-media__image { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
 .volleyball-media__placeholder {
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  align-content: center;
-  gap: 10px;
-  text-align: center;
-  background:
-    radial-gradient(circle at 70% 26%, rgba(217,75,43,.18), transparent 30%),
-    repeating-linear-gradient(-35deg, #15181a 0 24px, #111315 24px 48px);
+  background: #171a1c;
 }
-.volleyball-media__placeholder strong { font: 700 .8rem/1.2 var(--mono); letter-spacing: .08em; color: #d4d6d7; }
-.volleyball-media__placeholder span { font-size: .82rem; color: #878d90; }
+.volleyball-media__placeholder strong { font: 700 .72rem/1 var(--mono); letter-spacing: .09em; color: #747a7d; }
 .volleyball-copy { position: relative; z-index: 3; width: min(calc(100% - 112px), var(--max)); margin: 0 auto; padding: 0 0 86px; }
 .section-number--light { color: #e2826b; }
 .volleyball-copy h2 { margin: 18px 0 24px; font-size: clamp(4rem, 8vw, 8.2rem); line-height: .84; letter-spacing: -.07em; }
@@ -666,6 +628,27 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .site-footer .section-shell { min-height: 72px; display: flex; justify-content: space-between; align-items: center; gap: 20px; font: .61rem/1.3 var(--mono); }
 .site-footer a { color: #aeb2b4; text-decoration: none; }
 
+@media (min-width: 1181px) {
+  .work-section .section-shell,
+  .embedded-section .section-shell,
+  .rocketry-section .section-shell,
+  .about-section .section-shell,
+  .contact-section .section-shell,
+  .site-footer .section-shell {
+    width: auto;
+    max-width: var(--max);
+    margin-left: max(152px, calc((100vw - var(--max)) / 2));
+    margin-right: max(56px, calc((100vw - var(--max)) / 2));
+  }
+
+  .volleyball-copy {
+    width: auto;
+    max-width: var(--max);
+    margin-left: max(152px, calc((100vw - var(--max)) / 2));
+    margin-right: max(56px, calc((100vw - var(--max)) / 2));
+  }
+}
+
 @media (max-width: 1180px) {
   .hero__content { grid-template-columns: .9fr 1.1fr; }
   .system-map { transform: scale(.92); transform-origin: center; }
@@ -686,9 +669,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .system-node--stm32 { top: 45%; left: 48%; }
   .system-node--rocketry { top: 65%; left: 40%; }
   .system-node--volleyball { top: 83%; left: 55%; }
-  .hero__facts { grid-template-columns: repeat(2, 1fr); }
-  .hero__facts div:nth-child(2) { border-right: 0; }
-  .hero__facts div:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .section-intro--split, .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 42px; }
   .section-lede { justify-self: start; }
   .omni-opening, .prime-opening, .embedded-workbench { grid-template-columns: 1fr; }
@@ -725,9 +705,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .system-map::before { top: -10px; }
   .system-node { position: relative; left: auto !important; top: auto !important; min-width: 0; width: 100%; margin-bottom: 7px; border: 1px solid var(--line); background: rgba(251,250,246,.7); }
   .system-node:hover, .system-node:focus-visible { transform: translateX(3px); }
-  .hero__facts { grid-template-columns: 1fr; }
-  .hero__facts div { border-right: 0; border-bottom: 1px solid var(--line); }
-  .hero__facts div:last-child { border-bottom: 0; }
   .work-section, .embedded-section, .rocketry-section, .about-section { padding: 100px 0; }
   .section-intro { margin-bottom: 60px; }
   .section-intro h2 { font-size: clamp(3rem, 15vw, 5rem); }
@@ -867,12 +844,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
         </div>
       </div>
 
-      <div class="hero__facts" aria-label="Quick facts">
-        <div><strong>Pacesetter Directional</strong><span>Two co-op terms</span></div>
-        <div><strong>Redline Omni</strong><span>Production application</span></div>
-        <div><strong>UW Rocketry</strong><span>Electrical subteam</span></div>
-        <div><strong>Waterloo Warriors</strong><span>Varsity volleyball</span></div>
-      </div>
     </section>
 
     <section class="work-section" id="work" data-trace-section="work">
@@ -882,7 +853,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
             <p class="section-number">01 · PROFESSIONAL WORK</p>
             <h2>Pacesetter<br />Directional</h2>
           </div>
-          <p class="section-lede">I spent both of my co-op terms at Pacesetter Directional, first working on PRIME and later helping build and launch Redline Omni.</p>
+          <p class="section-lede">I spent two co-op terms at Pacesetter Directional. I started on PRIME in 2025, then returned in 2026 to help build and launch Redline Omni.</p>
         </header>
 
         <article class="omni-case" id="omni">
@@ -903,14 +874,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
               <p>My work was mainly in C#/.NET, WinUI, SQL Server, and Entity Framework, across reporting, tool testing, synchronization, offline workflows, engineering data, navigation, and application UI.</p>
             </div>
 
-            <div class="media-slot media-slot--wide" role="img" aria-label="Placeholder for a sanitized Redline Omni application screenshot">
-              <div class="media-slot__chrome" aria-hidden="true"><span></span><span></span><span></span></div>
-              <div class="media-slot__content">
-                <strong>REDLINE OMNI · MAIN APPLICATION VIEW</strong>
-                <span>Wide screenshot showing navigation and engineering data</span>
-                <small>No customer or well-identifying information</small>
-              </div>
-              <div class="media-slot__grid" aria-hidden="true"></div>
+            <div class="media-slot media-slot--wide">
+              <div class="media-slot__fallback" aria-hidden="true"><strong>OMNI</strong></div>
+              <img class="media-slot__image" src="images/omni.png" alt="Redline Omni application interface" onerror="this.hidden=true" />
             </div>
           </div>
 
@@ -951,12 +917,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
                   <small>Average generation time using 10,000+ m of well data</small>
                 </div>
               </div>
-              <div class="media-slot media-slot--story" role="img" aria-label="Placeholder for a Redline Omni LAS reporting screenshot">
-                <div class="media-slot__content">
-                  <strong>LAS / REPORT DETAIL</strong>
-                  <span>Use a frame with the report controls and engineering data visible</span>
-                </div>
-                <div class="media-slot__grid" aria-hidden="true"></div>
+              <div class="media-slot media-slot--story">
+                <div class="media-slot__fallback" aria-hidden="true"><strong>LAS</strong></div>
+                <img class="media-slot__image" src="images/las.png" alt="Redline Omni LAS reporting interface" onerror="this.hidden=true" />
               </div>
             </article>
 
@@ -1033,12 +996,9 @@ button, a { -webkit-tap-highlight-color: transparent; }
               <p class="lead-copy">My first term at Pacesetter was spent on PRIME, a large Angular application used around Pacesetter’s directional-drilling workflows.</p>
               <p>I helped migrate the application from Angular 14 toward Angular 20 while redesigning and improving more than 100 components. The work went beyond updating old code for a newer framework. I removed outdated patterns, improved slow or awkward UI, added dark-mode support, implemented user feedback, and wrote TypeScript and Node.js scripts to automate repetitive parts of the migration.</p>
             </div>
-            <div class="media-slot media-slot--prime" role="img" aria-label="Placeholder for a PRIME application screenshot">
-              <div class="media-slot__content">
-                <strong>PRIME · APPLICATION VIEW</strong>
-                <span>Use a wide frame that shows the scale and density of the application</span>
-              </div>
-              <div class="media-slot__grid" aria-hidden="true"></div>
+            <div class="media-slot media-slot--prime">
+              <div class="media-slot__fallback" aria-hidden="true"><strong>PRIME</strong></div>
+              <img class="media-slot__image" src="images/prime.png" alt="PRIME application interface" onerror="this.hidden=true" />
             </div>
           </div>
 
@@ -1092,8 +1052,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
             <div class="sensor-photo__frame">
               <img src="images/tempsensor1.jpg" alt="STM32 temperature display prototype" onerror="this.hidden=true; this.parentElement.classList.add('sensor-photo__frame--missing')" />
               <div class="sensor-photo__fallback" aria-hidden="true">
-                <strong>images/tempsensor1.jpg</strong>
-                <span>The existing project photo will render here in the repository.</span>
+                <strong>TEMP SENSOR</strong>
               </div>
             </div>
             <figcaption>STM32 temperature-display prototype.</figcaption>
@@ -1141,23 +1100,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
           <p class="section-lede">I spent more than a year on UW Rocketry’s electrical subteam, where I was exposed to the team’s avionics, sensors, wiring, and custom PCBs. I was selected for PCB testing and validation work, and the experience helped push my interests toward embedded systems and hardware.</p>
         </header>
 
-        <div class="media-slot media-slot--rocketry" role="img" aria-label="Placeholder for a UW Rocketry image">
-          <div class="media-slot__content">
-            <strong>UW ROCKETRY · IMAGE</strong>
-            <span>Team, launch, electrical workspace, or another image genuinely connected to my time on the team</span>
-          </div>
-          <div class="media-slot__grid" aria-hidden="true"></div>
+        <div class="media-slot media-slot--rocketry">
+          <div class="media-slot__fallback" aria-hidden="true"><strong>ROCKETRY</strong></div>
+          <img class="media-slot__image" src="images/rocketry.jpg" alt="UW Rocketry" onerror="this.hidden=true" />
         </div>
       </div>
     </section>
 
     <section class="volleyball-section" id="volleyball" data-trace-section="volleyball">
       <div class="volleyball-section__court" aria-hidden="true"></div>
-      <div class="volleyball-media" role="img" aria-label="Placeholder for a Waterloo Warriors volleyball action photo">
-        <div class="volleyball-media__placeholder">
-          <strong>WATERLOO WARRIORS · ACTION PHOTO</strong>
-          <span>Full-width game image, ideally blocking or attacking</span>
-        </div>
+      <div class="volleyball-media">
+        <div class="volleyball-media__placeholder" aria-hidden="true"><strong>VOLLEYBALL</strong></div>
+        <img class="volleyball-media__image" src="images/volleyball.jpg" alt="Spencer Ingram competing for Waterloo Warriors Men's Volleyball" onerror="this.hidden=true" />
       </div>
       <div class="volleyball-copy">
         <p class="section-number section-number--light">04 · VARSITY ATHLETICS</p>
