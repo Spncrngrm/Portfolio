@@ -680,9 +680,20 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .sync-run:disabled { cursor: default; opacity: .55; }
 
 .work-details { margin-top: 34px; border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
-.work-details__heading { padding: 21px 0; font-size: 1.02rem; font-weight: 700; }
+.work-details summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; padding: 21px 0; list-style: none; }
+.work-details summary::-webkit-details-marker { display: none; }
+.work-details summary span { font-size: 1.02rem; font-weight: 700; }
+.work-details summary small { font: .62rem/1 var(--mono); color: var(--muted); }
+.work-details[open] summary small { visibility: hidden; }
+.work-details[open] summary small::after { content: "Close list"; visibility: visible; float: right; }
 .work-details__grid { display: grid; grid-template-columns: repeat(3, 1fr); padding: 0 0 30px; }
 .work-details__grid span { padding: 12px 18px 12px 0; border-top: 1px solid var(--line); font-size: .88rem; color: var(--ink-soft); }
+
+.term-connector { display: flex; align-items: center; gap: 16px; margin: 110px 0 64px; font: 600 .62rem/1 var(--mono); color: var(--muted); }
+.term-connector i { flex: 1; height: 1px; background: var(--line-dark); position: relative; }
+.term-connector i::before, .term-connector i::after { content: ""; position: absolute; top: -3px; width: 7px; height: 7px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line-dark); }
+.term-connector i::before { left: 0; }
+.term-connector i::after { right: 0; }
 
 .case-header--prime { border-top-color: var(--ink); }
 .prime-opening { grid-template-columns: .95fr 1.05fr; }
@@ -699,10 +710,58 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .prime-split__junction span { width: 1px; height: 100%; background: var(--line-dark); position: relative; }
 .prime-split__junction span::before { content: ""; position: absolute; left: 50%; top: 50%; width: 11px; height: 11px; border-radius: 50%; background: var(--accent); transform: translate(-50%,-50%); box-shadow: 0 0 0 8px var(--paper); }
 
-.testimonial { margin: 90px 0 0; padding: 46px 0 0 18%; border-top: 1px solid var(--line-dark); }
-.testimonial p { margin: 0; max-width: 970px; font-size: clamp(1.35rem, 2.4vw, 2.2rem); line-height: 1.34; letter-spacing: -.035em; }
-.testimonial footer { display: flex; gap: 10px; margin-top: 26px; font-size: .78rem; }
-.testimonial footer span { color: var(--muted); }
+.testimonial {
+  position: relative;
+  overflow: hidden;
+  margin: 96px 0 108px;
+  padding: 54px 64px 58px;
+  background: var(--night);
+  color: var(--white);
+  border: 1px solid var(--night);
+}
+.testimonial::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--accent);
+}
+.testimonial::after {
+  content: "“";
+  position: absolute;
+  right: 32px;
+  top: -42px;
+  font: 700 11rem/1 Georgia, serif;
+  color: rgba(255,255,255,.055);
+  pointer-events: none;
+}
+.testimonial__label {
+  display: block;
+  margin-bottom: 26px;
+  font: 650 .62rem/1 var(--mono);
+  letter-spacing: .09em;
+  color: #e78a73;
+}
+.testimonial p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  max-width: 1120px;
+  font-size: clamp(1.65rem, 3vw, 3rem);
+  line-height: 1.2;
+  letter-spacing: -.045em;
+}
+.testimonial footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 10px;
+  margin-top: 32px;
+  font-size: .8rem;
+}
+.testimonial footer span { color: #92989b; }
 
 .embedded-section { padding: 145px 0; background: var(--paper-2); border-top: 1px solid var(--line-dark); border-bottom: 1px solid var(--line-dark); }
 .embedded-workbench { display: grid; grid-template-columns: .82fr 1.18fr; gap: 32px; align-items: stretch; }
@@ -893,7 +952,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .prime-thread--hardware { border-left: 0; border-top: 1px solid var(--line); }
   .matrix-demo { grid-template-columns: 1fr; }
   .matrix-panel { max-width: 520px; }
-  .testimonial { padding-left: 0; }
+  .testimonial { padding: 42px 38px 46px; }
   .skills-board__head, .skill-row { grid-template-columns: 200px 1fr; }
   .contact-grid { gap: 54px; }
 }
@@ -1067,7 +1126,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
             <p class="section-number">01 · PROFESSIONAL WORK</p>
             <h2>Pacesetter<br />Directional</h2>
           </div>
-          <p class="section-lede">I spent two co-op terms at Pacesetter Directional. I started on PRIME in 2025, then returned in 2026 to help build and launch Redline Omni.</p>
+          <p class="section-lede">Pacesetter Directional develops directional-drilling and MWD technology, including the software used around its tools. I worked there for two co-op terms, starting on PRIME in 2025 and returning in 2026 to help build and launch Redline Omni.</p>
         </header>
 
         <article class="omni-case" id="omni">
@@ -1083,7 +1142,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
           <div class="omni-opening">
             <div class="omni-opening__copy">
-              <p class="lead-copy">I was part of a three-person internal development team that took Redline Omni from a proof of concept and Figma designs to a production application used in the field.</p>
+              <p class="lead-copy">Redline Omni is Pacesetter’s C#/.NET desktop application for field and engineering workflows around MWD operations. I was part of a three-person internal development team that took it from a proof of concept and Figma designs to a production application used in the field.</p>
               <p>We built the core application, moved existing workflows into the new platform, improved several of them along the way, and launched Omni on its first well without production issues.</p>
               <p>My work was mainly in C#/.NET, WinUI, SQL Server, and Entity Framework, across reporting, tool testing, synchronization, offline workflows, engineering data, navigation, and application UI.</p>
             </div>
@@ -1204,21 +1263,31 @@ button, a { -webkit-tap-highlight-color: transparent; }
             </article>
           </div>
 
-          <div class="work-details">
-            <div class="work-details__heading">Other work in Omni</div>
+          <details class="work-details">
+            <summary><span>Other work in Omni</span><small>Open list</small></summary>
             <div class="work-details__grid">
               <span>LAS export and depth-range correctness</span>
               <span>GeoPlot and engineering-data visualization</span>
               <span>Job, run, and tool navigation</span>
               <span>Well-leg and hole-section synchronization</span>
-              <span>Gamma and tool diagnostics workflows</span>
-              <span>Tool testing and data interpreters</span>
-              <span>Data editing interface</span>
+              <span>Gamma and diagnostics workflows</span>
+              <span>Configuration pages</span>
               <span>Notifications and text-selection behaviour</span>
+              <span>Theme and UI fixes</span>
               <span>Loading and performance work</span>
             </div>
-          </div>
+          </details>
         </article>
+
+        <blockquote class="testimonial">
+          <span class="testimonial__label">FROM MY MANAGER AT PACESETTER</span>
+          <p>“What stood out most was Spencer’s eagerness to grow. He not only met every requirement but also began looking beyond the immediate task, considering ways to make the code faster, easier to use, and more maintainable.”</p>
+          <footer><strong>Bruce Louie</strong><span>Product Development Manager · Pacesetter Directional</span></footer>
+        </blockquote>
+
+        <div class="term-connector" aria-hidden="true">
+          <span>2026</span><i></i><span>2025</span>
+        </div>
 
         <article class="prime-case" id="prime">
           <header class="case-header case-header--prime">
@@ -1233,7 +1302,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
           <div class="prime-opening">
             <div class="prime-opening__copy">
-              <p class="lead-copy">My first term at Pacesetter was spent on PRIME, a large Angular application used around Pacesetter’s directional-drilling workflows.</p>
+              <p class="lead-copy">PRIME is Pacesetter’s Angular web application for directional-drilling data and workflows. My first co-op term centered on modernizing it and improving how users worked with it.</p>
               <p>I helped migrate the application from Angular 14 toward Angular 20 while redesigning and improving more than 100 components. The work went beyond updating old code for a newer framework. I removed outdated patterns, improved slow or awkward UI, added dark-mode support, implemented user feedback, and wrote TypeScript and Node.js scripts to automate repetitive parts of the migration.</p>
             </div>
             <div class="media-slot media-slot--prime">
@@ -1267,10 +1336,6 @@ button, a { -webkit-tap-highlight-color: transparent; }
           </div>
         </article>
 
-        <blockquote class="testimonial">
-          <p>“What stood out most was Spencer’s eagerness to grow. He not only met every requirement but also began looking beyond the immediate task, considering ways to make the code faster, easier to use, and more maintainable.”</p>
-          <footer><strong>Bruce Louie</strong><span>Product Development Manager · Pacesetter Directional</span></footer>
-        </blockquote>
       </div>
     </section>
 
@@ -1371,7 +1436,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
           <div class="about-content">
             <div class="about-photo">
               <div class="about-photo__fallback" aria-hidden="true"><strong>PORTRAIT</strong></div>
-              <img src="images/headshot.png" alt="Spencer Ingram" onerror="this.hidden=true" />
+              <img src="images/portrait.jpg" alt="Spencer Ingram" onerror="this.hidden=true" />
             </div>
             <div class="about-copy">
               <p class="about-copy__lead">I’m studying Computer Engineering at the University of Waterloo.</p>
