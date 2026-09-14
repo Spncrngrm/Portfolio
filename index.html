@@ -1274,102 +1274,72 @@
         transition-duration: .001ms !important;
       }
     }
-    /* Compact rocketry composition */
+    /* Rocketry collage — compact, uncropped cards */
 
 .rocketry-section {
-  padding: 76px 0 64px;
+  padding: 72px 0;
 }
 
 .rocketry-section .section-intro {
   margin-bottom: 28px;
-  gap: 40px;
-}
-
-.rocketry-section .section-intro h2 {
-  font-size: clamp(2.6rem, 4vw, 4rem);
-}
-
-.rocketry-section .section-lede {
-  max-width: 660px;
-  font-size: clamp(.9rem, 1.1vw, 1rem);
-  line-height: 1.55;
-}
-
-.rocketry-section .subrole {
-  margin-top: 12px;
-  font-size: .7rem;
 }
 
 .rocketry-wall {
-  position: relative;
-  isolation: isolate;
-  width: min(100%, 940px);
-  height: clamp(290px, 49svh, 440px);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(6, minmax(0, 70px));
+  gap: 10px;
+  width: min(100%, 1050px);
+  height: min(520px, 58vh);
+  min-height: 430px;
   margin: 0 auto;
 }
 
 .rocketry-wall figure {
-  position: absolute;
+  position: relative;
+  inset: auto;
+  width: auto;
+  height: auto;
   margin: 0;
+  transform: none;
   overflow: hidden;
+  border: 1px solid var(--line-dark);
   border-radius: 3px;
+  background: #171a1b;
+  box-shadow: 0 6px 18px rgba(21, 23, 24, .12);
 }
 
+/* Never crop the photographs */
+
 .rocketry-wall__photo {
-  border: 4px solid var(--white);
-  background: var(--paper-2);
-  box-shadow:
-    0 2px 5px rgba(21, 23, 24, .08),
-    0 10px 24px rgba(21, 23, 24, .12);
+  padding: 5px;
 }
 
 .rocketry-wall__photo img {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  background: #171a1b;
 }
 
-/* Largest supporting photo, left of the video. */
+/* High-emphasis supporting image */
+
 .rocketry-wall__photo--feature {
-  left: 1%;
-  top: 15%;
-  width: 24%;
-  height: 60%;
-  transform: rotate(-5deg);
-  z-index: 2;
-}
-
-.rocketry-wall__photo--main {
-  left: 28%;
-  top: 1%;
-  width: 23%;
-  height: 25%;
-  transform: rotate(3deg);
+  grid-column: 1 / 5;
+  grid-row: 1 / 4;
   z-index: 1;
 }
 
-.rocketry-wall__photo--small {
-  right: 10%;
-  top: 4%;
-  width: 12%;
-  height: 18%;
-  transform: rotate(7deg);
-  z-index: 1;
-}
+/* Main video */
 
-/* The entire video remains visible and unobstructed. */
 .rocketry-wall__video {
-  left: 27%;
-  top: 28%;
-  width: 49%;
-  height: 47%;
-  z-index: 5;
+  grid-column: 5 / 10;
+  grid-row: 1 / 5;
+  z-index: 2;
+  border: 2px solid var(--ink);
   background: #090b0c;
-  border: 3px solid var(--white);
-  box-shadow:
-    0 3px 8px rgba(21, 23, 24, .12),
-    0 18px 36px rgba(21, 23, 24, .2);
 }
 
 .rocketry-wall__video video {
@@ -1380,140 +1350,97 @@
   background: #090b0c;
 }
 
+/* Medium-emphasis images */
+
+.rocketry-wall__photo--main {
+  grid-column: 10 / 13;
+  grid-row: 1 / 3;
+}
+
 .rocketry-wall__photo--secondary {
-  right: 0;
-  top: 31%;
-  width: 21%;
-  height: 35%;
-  transform: rotate(5deg);
-  z-index: 2;
+  grid-column: 10 / 13;
+  grid-row: 3 / 5;
 }
 
 .rocketry-wall__photo--fire-one {
-  left: 17%;
-  bottom: 0;
-  width: 24%;
-  height: 21%;
-  transform: rotate(-3deg);
-  z-index: 3;
+  grid-column: 1 / 4;
+  grid-row: 4 / 7;
 }
 
 .rocketry-wall__photo--fire-three {
-  left: 46%;
-  bottom: 0;
-  width: 25%;
-  height: 21%;
-  transform: rotate(3deg);
-  z-index: 3;
+  grid-column: 4 / 7;
+  grid-row: 5 / 7;
 }
+
+/* Smaller, but still clearly visible */
+
+.rocketry-wall__photo--small {
+  grid-column: 7 / 10;
+  grid-row: 5 / 7;
+}
+
+/* Rocketry 2 now receives proper space */
 
 .rocketry-wall__photo--tiny {
-  right: 4%;
-  bottom: 5%;
-  width: 10%;
-  height: 15%;
-  transform: rotate(-7deg);
-  z-index: 1;
+  grid-column: 10 / 13;
+  grid-row: 5 / 7;
 }
 
-@media (max-width: 940px) {
-  .rocketry-section .section-intro {
-    grid-template-columns: .8fr 1.2fr;
-    gap: 24px;
-    align-items: start;
-  }
-
-  .rocketry-section .section-lede {
-    font-size: .88rem;
-  }
-}
-
-@media (max-width: 680px) {
-  .rocketry-section {
-    padding: 68px 0 44px;
-  }
-
-  .rocketry-section .section-intro {
-    grid-template-columns: 1fr;
-    gap: 14px;
-    margin-bottom: 20px;
-  }
-
-  .rocketry-section .section-intro h2 {
-    margin-top: 12px;
-    font-size: 2.7rem;
-  }
-
-  .rocketry-section .section-lede {
-    font-size: .86rem;
-    line-height: 1.5;
-  }
-
+@media (max-width: 800px) {
   .rocketry-wall {
-    height: clamp(280px, 43svh, 370px);
-  }
-
-  .rocketry-wall__photo {
-    border-width: 2px;
-  }
-
-  .rocketry-wall__photo--feature {
-    left: 1%;
-    top: 1%;
-    width: 30%;
-    height: 27%;
-  }
-
-  .rocketry-wall__photo--main {
-    left: 37%;
-    top: 3%;
-    width: 31%;
-    height: 22%;
-  }
-
-  .rocketry-wall__photo--small {
-    right: 2%;
-    top: 6%;
-    width: 20%;
-    height: 17%;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: repeat(10, 58px);
+    height: 620px;
+    min-height: 0;
   }
 
   .rocketry-wall__video {
-    left: 4%;
-    top: 31%;
-    width: 92%;
-    height: 41%;
-    border-width: 2px;
+    grid-column: 1 / 7;
+    grid-row: 1 / 5;
+  }
+
+  .rocketry-wall__photo--feature {
+    grid-column: 1 / 4;
+    grid-row: 5 / 8;
+  }
+
+  .rocketry-wall__photo--main {
+    grid-column: 4 / 7;
+    grid-row: 5 / 7;
   }
 
   .rocketry-wall__photo--secondary {
-    left: 1%;
-    right: auto;
-    top: auto;
-    bottom: 1%;
-    width: 26%;
-    height: 23%;
+    grid-column: 4 / 7;
+    grid-row: 7 / 9;
   }
 
   .rocketry-wall__photo--fire-one {
-    left: 30%;
-    bottom: 2%;
-    width: 25%;
-    height: 21%;
+    grid-column: 1 / 3;
+    grid-row: 8 / 11;
   }
 
   .rocketry-wall__photo--fire-three {
-    left: 58%;
-    bottom: 1%;
-    width: 25%;
-    height: 22%;
+    grid-column: 3 / 5;
+    grid-row: 8 / 11;
+  }
+
+  .rocketry-wall__photo--small {
+    grid-column: 5 / 7;
+    grid-row: 9 / 11;
   }
 
   .rocketry-wall__photo--tiny {
-    right: 0;
-    bottom: 6%;
-    width: 12%;
-    height: 13%;
+    grid-column: 5 / 7;
+    grid-row: 9 / 11;
+  }
+
+  /* Place download and Rocketry 2 side by side */
+  .rocketry-wall__photo--small {
+    grid-column: 5 / 6;
+  }
+
+  .rocketry-wall__photo--tiny {
+    grid-column: 6 / 7;
   }
 }
   </style>
