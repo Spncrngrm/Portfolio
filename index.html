@@ -1274,6 +1274,248 @@
         transition-duration: .001ms !important;
       }
     }
+    /* Compact rocketry composition */
+
+.rocketry-section {
+  padding: 76px 0 64px;
+}
+
+.rocketry-section .section-intro {
+  margin-bottom: 28px;
+  gap: 40px;
+}
+
+.rocketry-section .section-intro h2 {
+  font-size: clamp(2.6rem, 4vw, 4rem);
+}
+
+.rocketry-section .section-lede {
+  max-width: 660px;
+  font-size: clamp(.9rem, 1.1vw, 1rem);
+  line-height: 1.55;
+}
+
+.rocketry-section .subrole {
+  margin-top: 12px;
+  font-size: .7rem;
+}
+
+.rocketry-wall {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 940px);
+  height: clamp(290px, 49svh, 440px);
+  margin: 0 auto;
+}
+
+.rocketry-wall figure {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.rocketry-wall__photo {
+  border: 4px solid var(--white);
+  background: var(--paper-2);
+  box-shadow:
+    0 2px 5px rgba(21, 23, 24, .08),
+    0 10px 24px rgba(21, 23, 24, .12);
+}
+
+.rocketry-wall__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Largest supporting photo, left of the video. */
+.rocketry-wall__photo--feature {
+  left: 1%;
+  top: 15%;
+  width: 24%;
+  height: 60%;
+  transform: rotate(-5deg);
+  z-index: 2;
+}
+
+.rocketry-wall__photo--main {
+  left: 28%;
+  top: 1%;
+  width: 23%;
+  height: 25%;
+  transform: rotate(3deg);
+  z-index: 1;
+}
+
+.rocketry-wall__photo--small {
+  right: 10%;
+  top: 4%;
+  width: 12%;
+  height: 18%;
+  transform: rotate(7deg);
+  z-index: 1;
+}
+
+/* The entire video remains visible and unobstructed. */
+.rocketry-wall__video {
+  left: 27%;
+  top: 28%;
+  width: 49%;
+  height: 47%;
+  z-index: 5;
+  background: #090b0c;
+  border: 3px solid var(--white);
+  box-shadow:
+    0 3px 8px rgba(21, 23, 24, .12),
+    0 18px 36px rgba(21, 23, 24, .2);
+}
+
+.rocketry-wall__video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #090b0c;
+}
+
+.rocketry-wall__photo--secondary {
+  right: 0;
+  top: 31%;
+  width: 21%;
+  height: 35%;
+  transform: rotate(5deg);
+  z-index: 2;
+}
+
+.rocketry-wall__photo--fire-one {
+  left: 17%;
+  bottom: 0;
+  width: 24%;
+  height: 21%;
+  transform: rotate(-3deg);
+  z-index: 3;
+}
+
+.rocketry-wall__photo--fire-three {
+  left: 46%;
+  bottom: 0;
+  width: 25%;
+  height: 21%;
+  transform: rotate(3deg);
+  z-index: 3;
+}
+
+.rocketry-wall__photo--tiny {
+  right: 4%;
+  bottom: 5%;
+  width: 10%;
+  height: 15%;
+  transform: rotate(-7deg);
+  z-index: 1;
+}
+
+@media (max-width: 940px) {
+  .rocketry-section .section-intro {
+    grid-template-columns: .8fr 1.2fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  .rocketry-section .section-lede {
+    font-size: .88rem;
+  }
+}
+
+@media (max-width: 680px) {
+  .rocketry-section {
+    padding: 68px 0 44px;
+  }
+
+  .rocketry-section .section-intro {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .rocketry-section .section-intro h2 {
+    margin-top: 12px;
+    font-size: 2.7rem;
+  }
+
+  .rocketry-section .section-lede {
+    font-size: .86rem;
+    line-height: 1.5;
+  }
+
+  .rocketry-wall {
+    height: clamp(280px, 43svh, 370px);
+  }
+
+  .rocketry-wall__photo {
+    border-width: 2px;
+  }
+
+  .rocketry-wall__photo--feature {
+    left: 1%;
+    top: 1%;
+    width: 30%;
+    height: 27%;
+  }
+
+  .rocketry-wall__photo--main {
+    left: 37%;
+    top: 3%;
+    width: 31%;
+    height: 22%;
+  }
+
+  .rocketry-wall__photo--small {
+    right: 2%;
+    top: 6%;
+    width: 20%;
+    height: 17%;
+  }
+
+  .rocketry-wall__video {
+    left: 4%;
+    top: 31%;
+    width: 92%;
+    height: 41%;
+    border-width: 2px;
+  }
+
+  .rocketry-wall__photo--secondary {
+    left: 1%;
+    right: auto;
+    top: auto;
+    bottom: 1%;
+    width: 26%;
+    height: 23%;
+  }
+
+  .rocketry-wall__photo--fire-one {
+    left: 30%;
+    bottom: 2%;
+    width: 25%;
+    height: 21%;
+  }
+
+  .rocketry-wall__photo--fire-three {
+    left: 58%;
+    bottom: 1%;
+    width: 25%;
+    height: 22%;
+  }
+
+  .rocketry-wall__photo--tiny {
+    right: 0;
+    bottom: 6%;
+    width: 12%;
+    height: 13%;
+  }
+}
   </style>
 </head>
 
@@ -1776,80 +2018,85 @@
           </p>
         </header>
 
-        <div class="rocket-board" aria-label="UW Rocketry photo and video collection">
-          <div class="rocket-board__head">
-            <div class="rocket-board__title">
-              <i aria-hidden="true"></i>
-              <strong>UW ROCKETRY / FIELD NOTES</strong>
-            </div>
-            <span>ELECTRICAL SUBTEAM · PHOTO / VIDEO</span>
-          </div>
+        <div class="rocketry-wall">
+  <figure class="rocketry-wall__photo rocketry-wall__photo--feature">
+    <img
+      src="images/rctry.webp"
+      alt="UW Rocketry"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
 
-          <div class="rocket-grid">
-            <figure class="rocket-tile rocket-tile--video">
-              <figcaption class="rocket-video__head">
-                <span>01 / UW ROCKETRY</span>
-                <span>VIDEO</span>
-              </figcaption>
-              <div class="rocket-video__viewport">
-                <video
-                  data-rocketry-video
-                  muted
-                  loop
-                  playsinline
-                  controls
-                  preload="metadata"
-                  aria-label="UW Rocketry video"
-                >
-                  <source src="images/rocketryvid.mp4" type="video/mp4" />
-                  <a href="images/rocketryvid.mp4">Watch the UW Rocketry video</a>
-                </video>
-                <div class="rocket-video__error" data-video-error hidden>
-                  <span>The video could not be loaded.</span>
-                  <a href="images/rocketryvid.mp4">Open video directly ↗</a>
-                </div>
-              </div>
-            </figure>
+  <figure class="rocketry-wall__photo rocketry-wall__photo--main">
+    <img
+      src="images/rokcetrymain.png"
+      alt="UW Rocketry team photograph"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
 
-            <a class="rocket-tile rocket-tile--feature" href="images/rctry.webp" data-lightbox aria-label="Enlarge featured UW Rocketry photograph">
-              <img src="images/rctry.webp" alt="Featured UW Rocketry photograph" loading="lazy" decoding="async" />
-              <span class="rocket-tile__index" aria-hidden="true">02 / ROCKETRY</span>
-            </a>
+  <figure class="rocketry-wall__photo rocketry-wall__photo--small">
+    <img
+      src="images/download.webp"
+      alt="UW Rocketry photograph"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
 
-            <a class="rocket-tile rocket-tile--main" href="images/rokcetrymain.png" data-lightbox aria-label="Enlarge UW Rocketry main photograph">
-              <img src="images/rokcetrymain.png" alt="UW Rocketry main photograph" loading="lazy" decoding="async" />
-              <span class="rocket-tile__index" aria-hidden="true">03</span>
-            </a>
+  <figure class="rocketry-wall__video">
+    <video
+      data-rocketry-video
+      muted
+      loop
+      playsinline
+      controls
+      preload="metadata"
+      aria-label="UW Rocketry video"
+    >
+      <source src="images/rocketryvid.mp4" type="video/mp4" />
+      <a href="images/rocketryvid.mp4">Watch the video</a>
+    </video>
+  </figure>
 
-            <a class="rocket-tile rocket-tile--jpg" href="images/rctry.jpg" data-lightbox aria-label="Enlarge UW Rocketry photograph">
-              <img src="images/rctry.jpg" alt="UW Rocketry photograph" loading="lazy" decoding="async" />
-              <span class="rocket-tile__index" aria-hidden="true">04 / ROCKETRY</span>
-            </a>
+  <figure class="rocketry-wall__photo rocketry-wall__photo--secondary">
+    <img
+      src="images/rctry.jpg"
+      alt="UW Rocketry photograph"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
 
-            <a class="rocket-tile rocket-tile--fire-one" href="images/static fire 1.png" data-lightbox aria-label="Enlarge static fire photograph one">
-              <img src="images/static fire 1.png" alt="UW Rocketry static fire test" loading="lazy" decoding="async" />
-              <span class="rocket-tile__index" aria-hidden="true">05 / STATIC FIRE</span>
-            </a>
+  <figure class="rocketry-wall__photo rocketry-wall__photo--fire-one">
+    <img
+      src="images/static fire 1.png"
+      alt="UW Rocketry static fire test"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
 
-            <a class="rocket-tile rocket-tile--fire-three" href="images/static fire 3.png" data-lightbox aria-label="Enlarge static fire photograph three">
-              <img src="images/static fire 3.png" alt="Another view of the UW Rocketry static fire test" loading="lazy" decoding="async" />
-              <span class="rocket-tile__index" aria-hidden="true">06</span>
-            </a>
+  <figure class="rocketry-wall__photo rocketry-wall__photo--fire-three">
+    <img
+      src="images/static fire 3.png"
+      alt="UW Rocketry static fire test"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
 
-            <a class="rocket-tile rocket-tile--small" href="images/download.webp" data-lightbox aria-label="Enlarge supporting rocketry photograph">
-              <img src="images/download.webp" alt="Supporting UW Rocketry photograph" loading="lazy" decoding="async" />
-            </a>
-
-            <a class="rocket-tile rocket-tile--tiny" href="images/rocketry2.png" data-lightbox aria-label="Enlarge additional rocketry photograph">
-              <img src="images/rocketry2.png" alt="Additional UW Rocketry photograph" loading="lazy" decoding="async" />
-            </a>
-          </div>
-
-          <div class="rocket-board__foot">
-            <strong>BUILD · TEST · LAUNCH</strong>
-            <span>SELECT A PHOTO TO EXPAND · VIDEO CONTROLS AVAILABLE</span>
-          </div>
-        </div>
+  <figure class="rocketry-wall__photo rocketry-wall__photo--tiny">
+    <img
+      src="images/rocketry2.png"
+      alt="Additional UW Rocketry photograph"
+      loading="lazy"
+      decoding="async"
+    />
+  </figure>
+</div>
       </div>
     </section>
 
