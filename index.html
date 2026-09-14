@@ -688,7 +688,7 @@
     }
     .magnetics-panel {
       min-height: 430px;
-      padding: 24px;
+      padding: 25px;
       border-left: 1px solid var(--line);
       background: var(--night);
       color: var(--white);
@@ -704,7 +704,7 @@
       inset: 0;
       pointer-events: none;
       background:
-        radial-gradient(circle at 28% 46%, rgba(240,90,53,.1), transparent 33%),
+        radial-gradient(circle at 12% 14%, rgba(240,90,53,.09), transparent 30%),
         linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
       background-size: auto, 22px 22px, 22px 22px;
@@ -719,8 +719,8 @@
       border-bottom: 1px solid #3b4042;
     }
     .magnetics-panel__head > div:first-child > span {
-      font: 600 .55rem/1.35 var(--mono);
-      letter-spacing: .07em;
+      font: 650 .54rem/1.35 var(--mono);
+      letter-spacing: .08em;
       color: #d67861;
     }
     .magnetics-panel__head strong {
@@ -730,9 +730,20 @@
     }
     .magnetics-panel__tools { display: flex; align-items: center; gap: 10px; }
     .magnetics-panel__status {
-      font: 650 .52rem/1 var(--mono);
-      color: #9aa0a2;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font: 650 .51rem/1 var(--mono);
+      color: #aeb3b5;
       white-space: nowrap;
+    }
+    .magnetics-panel__status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #65c486;
+      box-shadow: 0 0 0 4px rgba(101,196,134,.1);
     }
     .magnetics-info { position: relative; }
     .magnetics-info summary {
@@ -762,7 +773,7 @@
       z-index: 12;
       right: 0;
       top: 34px;
-      width: min(270px, 70vw);
+      width: min(280px, 72vw);
       margin: 0;
       padding: 12px 14px;
       border: 1px solid #555b5e;
@@ -771,160 +782,229 @@
       box-shadow: 0 14px 32px rgba(0,0,0,.35);
       font: .58rem/1.55 var(--mono);
     }
-    .magnetics-game {
+    .magnetics-flow {
       display: grid;
-      grid-template-columns: minmax(210px, 1.15fr) minmax(155px, .85fr);
+      grid-template-columns: minmax(120px, 1fr) 76px minmax(130px, 1fr);
       align-items: center;
-      gap: 22px;
-      flex: 1;
+      gap: 12px;
     }
-    .magnetics-chamber {
-      position: relative;
-      width: min(245px, 100%);
-      aspect-ratio: 1;
-      margin: auto;
-      border: 1px solid #5a6063;
-      border-radius: 50%;
+    .magnetics-source,
+    .magnetics-destination {
+      min-height: 76px;
+      padding: 13px 14px;
+      border: 1px solid #4b5153;
+      background: rgba(18,21,22,.84);
+      display: flex;
+      align-items: center;
+      gap: 13px;
+    }
+    .magnetics-source__tool {
+      flex: 0 0 auto;
+      width: 74px;
+      height: 18px;
+      border: 1px solid #8d9395;
+      border-radius: 10px 3px 3px 10px;
       background:
-        radial-gradient(circle at center, rgba(240,90,53,.12) 0 2%, transparent 3%),
-        linear-gradient(90deg, transparent calc(50% - .5px), #353a3c 50%, transparent calc(50% + .5px)),
-        linear-gradient(transparent calc(50% - .5px), #353a3c 50%, transparent calc(50% + .5px)),
-        repeating-radial-gradient(circle, transparent 0 22%, rgba(255,255,255,.035) 22.5% 23%);
-      box-shadow: inset 0 0 55px rgba(0,0,0,.3), 0 0 0 8px rgba(255,255,255,.018);
-      cursor: grab;
-      touch-action: none;
-      user-select: none;
+        linear-gradient(90deg, transparent 0 19%, #cc5e46 19% 25%, transparent 25% 70%, #cc5e46 70% 76%, transparent 76%),
+        linear-gradient(#d0d3d4, #737a7d 51%, #a7acae 52%);
+      box-shadow: 0 5px 13px rgba(0,0,0,.35);
+      position: relative;
     }
-    .magnetics-chamber:active { cursor: grabbing; }
-    .magnetics-chamber:focus-visible { outline: 2px solid var(--signal); outline-offset: 6px; }
-    .magnetics-chamber::before {
+    .magnetics-source__tool::after {
       content: "";
       position: absolute;
-      inset: 5px;
-      border-radius: 50%;
-      background: repeating-conic-gradient(from -1deg, rgba(255,255,255,.3) 0 1deg, transparent 1deg 15deg);
-      -webkit-mask: radial-gradient(circle, transparent 0 88%, #000 88.5% 91%, transparent 91.5%);
-      mask: radial-gradient(circle, transparent 0 88%, #000 88.5% 91%, transparent 91.5%);
-      opacity: .45;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-top: 5px solid transparent;
+      border-bottom: 5px solid transparent;
+      border-left: 8px solid #c5c9ca;
     }
-    .magnetics-target {
-      position: absolute;
-      width: 22px;
-      height: 22px;
-      transform: translate(-50%,-50%);
-      border: 1px solid #6c7275;
-      border-radius: 50%;
-      background: #171a1c;
-      color: #8d9396;
+    .magnetics-source small,
+    .magnetics-destination small {
+      display: block;
+      margin-bottom: 5px;
+      color: #7f8588;
+      font: 650 .48rem/1 var(--mono);
+      letter-spacing: .05em;
+    }
+    .magnetics-source strong,
+    .magnetics-destination strong {
+      display: block;
+      font: 650 .7rem/1.2 var(--mono);
+      color: #d9dcdd;
+    }
+    .magnetics-destination {
+      border-color: #70483f;
+      justify-content: space-between;
+    }
+    .magnetics-destination__mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid #68483f;
       display: grid;
       place-items: center;
-      font: 650 .48rem/1 var(--mono);
-      transition: background .18s ease, border-color .18s ease, color .18s ease, box-shadow .18s ease;
+      color: #e1755c;
+      background: rgba(240,90,53,.08);
+      font: 750 .52rem/1 var(--mono);
     }
-    .magnetics-target.is-captured {
-      color: #101314;
-      border-color: var(--signal);
+    .magnetics-stream { text-align: center; min-width: 0; }
+    .magnetics-stream span {
+      display: block;
+      margin-bottom: 8px;
+      color: #858b8e;
+      font: 650 .46rem/1 var(--mono);
+      white-space: nowrap;
+    }
+    .magnetics-stream__line {
+      height: 1px;
+      background: #555b5e;
+      position: relative;
+    }
+    .magnetics-stream__line::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: -3px;
+      width: 6px;
+      height: 6px;
+      border-top: 1px solid #df745c;
+      border-right: 1px solid #df745c;
+      transform: rotate(45deg);
+    }
+    .magnetics-stream__line i {
+      position: absolute;
+      left: 56%;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
       background: var(--signal);
-      box-shadow: 0 0 0 5px rgba(240,90,53,.12), 0 0 18px rgba(240,90,53,.35);
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 0 4px rgba(240,90,53,.1);
     }
-    .magnetics-tool {
+    .magnetics-validation {
+      border: 1px solid #454a4d;
+      background: rgba(15,18,19,.76);
+    }
+    .magnetics-validation__head {
+      display: grid;
+      grid-template-columns: 74px 1fr 65px;
+      gap: 12px;
+      padding: 9px 14px;
+      border-bottom: 1px solid #3c4143;
+      color: #747a7d;
+      font: 650 .45rem/1 var(--mono);
+      letter-spacing: .05em;
+    }
+    .magnetics-reading {
+      display: grid;
+      grid-template-columns: 74px 1fr 65px;
+      gap: 12px;
+      align-items: center;
+      min-height: 52px;
+      padding: 10px 14px;
+      border-bottom: 1px solid #34393b;
+    }
+    .magnetics-reading:last-child { border-bottom: 0; }
+    .magnetics-reading__label span {
+      display: block;
+      margin-bottom: 4px;
+      color: #e0755c;
+      font: 750 .58rem/1 var(--mono);
+    }
+    .magnetics-reading__label small {
+      color: #777d80;
+      font: 600 .45rem/1 var(--mono);
+    }
+    .magnetics-range {
+      height: 22px;
+      position: relative;
+      background:
+        linear-gradient(90deg, #292e30 0 16%, rgba(101,196,134,.16) 16% 84%, #292e30 84%);
+      border-left: 1px solid #51575a;
+      border-right: 1px solid #51575a;
+    }
+    .magnetics-range::before,
+    .magnetics-range::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777d80;
+      font: 600 .41rem/1 var(--mono);
+    }
+    .magnetics-range::before { content: "MIN"; left: 4px; }
+    .magnetics-range::after { content: "MAX"; right: 4px; }
+    .magnetics-range__marker {
+      position: absolute;
+      left: var(--reading);
+      top: 50%;
+      width: 2px;
+      height: 30px;
+      background: #f0f2f2;
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 8px rgba(255,255,255,.3);
+    }
+    .magnetics-range__marker::after {
+      content: "";
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 61%;
-      height: 30px;
-      transform: translate(-50%,-50%) rotate(var(--tool-angle, -90deg));
-      border: 1px solid #9ca2a4;
-      border-radius: 18px 5px 5px 18px;
-      background:
-        linear-gradient(90deg, transparent 0 18%, #d05d43 18% 23%, transparent 23% 67%, #d05d43 67% 72%, transparent 72%),
-        linear-gradient(#d4d7d8, #858c8f 48%, #555c5f 52%, #a6abad);
-      box-shadow: 0 7px 20px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.5);
-      transform-origin: center;
-      pointer-events: none;
-      transition: filter .2s ease;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #65c486;
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 0 4px rgba(101,196,134,.12);
     }
-    .magnetics-tool::before {
-      content: "MWD";
-      position: absolute;
-      left: 31%;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #303537;
-      font: 750 .42rem/1 var(--mono);
-      letter-spacing: .08em;
-    }
-    .magnetics-tool::after {
-      content: "";
-      position: absolute;
-      right: -12px;
-      top: 50%;
-      width: 0;
-      height: 0;
-      transform: translateY(-50%);
-      border-top: 9px solid transparent;
-      border-bottom: 9px solid transparent;
-      border-left: 13px solid #d9dcdd;
-    }
-    .magnetics-readout { min-width: 0; }
-    .magnetics-progress { padding-bottom: 15px; margin-bottom: 15px; border-bottom: 1px solid #3b4042; }
-    .magnetics-progress__line { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
-    .magnetics-progress span,
-    .magnetics-progress strong { font: 650 .51rem/1 var(--mono); color: #91979a; }
-    .magnetics-progress strong { color: #e9ebec; }
-    .magnetics-progress > i {
+    .magnetics-reading__result { text-align: right; }
+    .magnetics-reading__result strong {
       display: block;
-      height: 3px;
-      margin-top: 10px;
-      background: #363b3d;
-      overflow: hidden;
+      margin-bottom: 4px;
+      color: #dcebdd;
+      font: 750 .54rem/1 var(--mono);
     }
-    .magnetics-progress > i > b {
-      display: block;
-      width: 0;
-      height: 100%;
-      background: var(--signal);
-      transition: width .24s ease;
+    .magnetics-reading__result small {
+      color: #737a7c;
+      font: 600 .43rem/1 var(--mono);
     }
-    .magnetics-axis { display: grid; grid-template-columns: 14px 42px 1fr; align-items: center; gap: 8px; margin: 10px 0; }
-    .magnetics-axis > span { font: 750 .52rem/1 var(--mono); color: #df755c; }
-    .magnetics-axis > strong { font: 600 .5rem/1 var(--mono); color: #aeb3b5; font-variant-numeric: tabular-nums; }
-    .magnetics-axis > i { height: 3px; background: #363b3d; overflow: hidden; }
-    .magnetics-axis > i > b { display: block; height: 100%; width: 50%; background: #aeb3b5; transition: width .1s linear; }
-    .magnetics-instruction { min-height: 3.1em; margin: 16px 0 12px; color: #92989a; font: .55rem/1.5 var(--mono); }
-    .magnetics-reset {
-      padding: 9px 11px;
-      border: 1px solid #555b5e;
-      background: transparent;
-      color: #d8dbdc;
-      cursor: pointer;
-      font: 650 .52rem/1 var(--mono);
-      transition: border-color .2s ease, background .2s ease;
-    }
-    .magnetics-reset:hover,
-    .magnetics-reset:focus-visible { border-color: var(--signal); background: rgba(240,90,53,.1); outline: none; }
-    .magnetics-result {
-      display: flex;
+    .magnetics-summary {
+      display: grid;
+      grid-template-columns: 1fr auto;
       align-items: center;
-      gap: 9px;
-      padding-top: 14px;
-      border-top: 1px solid #3b4042;
-      opacity: .42;
-      transition: opacity .25s ease;
+      gap: 18px;
+      padding: 14px 16px;
+      border: 1px solid rgba(101,196,134,.36);
+      background: linear-gradient(90deg, rgba(101,196,134,.09), rgba(101,196,134,.025));
     }
-    .magnetics-result > span { width: 7px; height: 7px; border-radius: 50%; background: #73797c; }
-    .magnetics-result strong { font: 650 .53rem/1 var(--mono); color: #a8adaf; letter-spacing: .04em; }
-    .magnetics-result em { margin-left: auto; font: 750 .56rem/1 var(--mono); color: #777d80; font-style: normal; }
-    .magnetics-panel.is-complete .magnetics-result { opacity: 1; }
-    .magnetics-panel.is-complete .magnetics-result > span { background: #65c486; box-shadow: 0 0 0 5px rgba(101,196,134,.1); }
-    .magnetics-panel.is-complete .magnetics-result em { color: #78d397; }
-    .magnetics-panel.is-complete .magnetics-tool { filter: drop-shadow(0 0 10px rgba(240,90,53,.26)); }
+    .magnetics-summary span {
+      display: block;
+      margin-bottom: 5px;
+      color: #78c992;
+      font: 750 .52rem/1 var(--mono);
+      letter-spacing: .06em;
+    }
+    .magnetics-summary p {
+      margin: 0;
+      color: #a4aaac;
+      font: .55rem/1.45 var(--mono);
+    }
+    .magnetics-summary strong {
+      color: #8ddaA7;
+      font: 750 1.3rem/1 var(--mono);
+      letter-spacing: -.04em;
+    }
 
     @media (max-width: 520px) {
       .magnetics-panel { padding: 20px; }
-      .magnetics-game { grid-template-columns: 1fr; gap: 18px; }
-      .magnetics-chamber { width: min(220px, 82vw); }
+      .magnetics-flow { grid-template-columns: 1fr; }
+      .magnetics-stream { padding: 3px 28px; }
+      .magnetics-stream__line { transform: rotate(90deg); }
+      .magnetics-validation__head,
+      .magnetics-reading { grid-template-columns: 54px 1fr 54px; gap: 8px; padding-left: 10px; padding-right: 10px; }
       .magnetics-panel__status { display: none; }
+      .magnetics-source,
+      .magnetics-destination { min-height: 62px; }
     }
 
     /* Sync demonstration */
@@ -1861,70 +1941,102 @@
                 </p>
               </div>
 
-              <div class="magnetics-panel" data-magnetics-game aria-labelledby="magnetics-demo-title">
+              <div class="magnetics-panel" aria-labelledby="magnetics-demo-title">
                 <div class="magnetics-panel__head">
                   <div>
-                    <span>PLAYFUL SENSOR DEMO</span>
-                    <strong id="magnetics-demo-title">Magnetic calibration</strong>
+                    <span>FIELD VALIDATION</span>
+                    <strong id="magnetics-demo-title">How Omni checks a Magnetics Test</strong>
                   </div>
                   <div class="magnetics-panel__tools">
-                    <span class="magnetics-panel__status" data-magnetics-status>0 / 6 CAPTURED</span>
+                    <span class="magnetics-panel__status">ALL VALUES IN RANGE</span>
                     <details class="magnetics-info">
-                      <summary aria-label="About this interactive visual">i</summary>
+                      <summary aria-label="About this explanatory visual">i</summary>
                       <p class="magnetics-info__note">
-                        Fun portfolio representation only. This is not Pacesetter software and does not reproduce Pacesetter's actual Magnetics Test or testing procedure.
+                        Simplified portfolio explanation only. This is not the Pacesetter Omni interface and the values shown are illustrative, not real test data.
                       </p>
                     </details>
                   </div>
                 </div>
 
-                <div class="magnetics-game">
-                  <div
-                    class="magnetics-chamber"
-                    data-magnetics-chamber
-                    tabindex="0"
-                    role="group"
-                    aria-label="Interactive calibration chamber. Drag around the circle or use the left and right arrow keys to capture six calibration points."
-                  >
-                    <span class="magnetics-target" data-magnetics-target>1</span>
-                    <span class="magnetics-target" data-magnetics-target>2</span>
-                    <span class="magnetics-target" data-magnetics-target>3</span>
-                    <span class="magnetics-target" data-magnetics-target>4</span>
-                    <span class="magnetics-target" data-magnetics-target>5</span>
-                    <span class="magnetics-target" data-magnetics-target>6</span>
-                    <div class="magnetics-tool" data-magnetics-tool aria-hidden="true"></div>
+                <div class="magnetics-flow" aria-label="Magnetic field readings flow from the MWD tool into Omni">
+                  <div class="magnetics-source">
+                    <span class="magnetics-source__tool" aria-hidden="true"></span>
+                    <div>
+                      <small>MWD TOOL</small>
+                      <strong>Magnetic field readings</strong>
+                    </div>
                   </div>
 
-                  <div class="magnetics-readout">
-                    <div class="magnetics-progress">
-                      <div class="magnetics-progress__line">
-                        <span>CALIBRATION</span>
-                        <strong data-magnetics-percent>0%</strong>
-                      </div>
-                      <i aria-hidden="true"><b data-magnetics-progress></b></i>
-                    </div>
+                  <div class="magnetics-stream" aria-hidden="true">
+                    <span>CAN / MPT</span>
+                    <div class="magnetics-stream__line"><i></i></div>
+                  </div>
 
-                    <div class="magnetics-axis">
-                      <span>X</span><strong data-magnetics-x>+0.00</strong><i aria-hidden="true"><b data-magnetics-x-bar></b></i>
+                  <div class="magnetics-destination">
+                    <div>
+                      <small>OMNI</small>
+                      <strong>Range validation</strong>
                     </div>
-                    <div class="magnetics-axis">
-                      <span>Y</span><strong data-magnetics-y>+0.00</strong><i aria-hidden="true"><b data-magnetics-y-bar></b></i>
-                    </div>
-                    <div class="magnetics-axis">
-                      <span>Z</span><strong data-magnetics-z>+0.00</strong><i aria-hidden="true"><b data-magnetics-z-bar></b></i>
-                    </div>
-
-                    <p class="magnetics-instruction" data-magnetics-instruction>
-                      Drag the tool through all six points to simulate a calibration sweep.
-                    </p>
-                    <button class="magnetics-reset" type="button" data-magnetics-reset>Reset test</button>
+                    <span class="magnetics-destination__mark" aria-hidden="true">X Y Z</span>
                   </div>
                 </div>
 
-                <div class="magnetics-result" aria-live="polite">
-                  <span aria-hidden="true"></span>
-                  <strong>MAGNETICS TEST</strong>
-                  <em data-magnetics-result-text>INCOMPLETE</em>
+                <div class="magnetics-validation" role="img" aria-label="Illustrative X, Y, and Z magnetic field readings all fall within their expected ranges">
+                  <div class="magnetics-validation__head" aria-hidden="true">
+                    <span>FIELD</span>
+                    <span>ACCEPTABLE RANGE</span>
+                    <span>RESULT</span>
+                  </div>
+
+                  <div class="magnetics-reading">
+                    <div class="magnetics-reading__label">
+                      <span>X</span>
+                      <small>FIELD AXIS</small>
+                    </div>
+                    <div class="magnetics-range" aria-hidden="true">
+                      <i class="magnetics-range__marker" style="--reading: 42%"></i>
+                    </div>
+                    <div class="magnetics-reading__result">
+                      <strong>IN RANGE</strong>
+                      <small>PASS</small>
+                    </div>
+                  </div>
+
+                  <div class="magnetics-reading">
+                    <div class="magnetics-reading__label">
+                      <span>Y</span>
+                      <small>FIELD AXIS</small>
+                    </div>
+                    <div class="magnetics-range" aria-hidden="true">
+                      <i class="magnetics-range__marker" style="--reading: 61%"></i>
+                    </div>
+                    <div class="magnetics-reading__result">
+                      <strong>IN RANGE</strong>
+                      <small>PASS</small>
+                    </div>
+                  </div>
+
+                  <div class="magnetics-reading">
+                    <div class="magnetics-reading__label">
+                      <span>Z</span>
+                      <small>FIELD AXIS</small>
+                    </div>
+                    <div class="magnetics-range" aria-hidden="true">
+                      <i class="magnetics-range__marker" style="--reading: 53%"></i>
+                    </div>
+                    <div class="magnetics-reading__result">
+                      <strong>IN RANGE</strong>
+                      <small>PASS</small>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="magnetics-summary">
+                  <div>
+                    <span>TEST LOGIC</span>
+                    <p>Omni compares each measured magnetic-field value with its permitted limits.</p>
+                  </div>
+                  <strong>PASS</strong>
                 </div>
               </div>
             </article>
@@ -2529,163 +2641,6 @@
       }
 
       // STM32 matrix simulation.
-      // Playful magnetic calibration visual — intentionally not a recreation of Pacesetter software.
-      function initMagnetics() {
-        const panel = document.querySelector('[data-magnetics-game]');
-
-        if (!panel) {
-          return;
-        }
-
-        const chamber = panel.querySelector('[data-magnetics-chamber]');
-        const tool = panel.querySelector('[data-magnetics-tool]');
-        const targets = [...panel.querySelectorAll('[data-magnetics-target]')];
-        const status = panel.querySelector('[data-magnetics-status]');
-        const percent = panel.querySelector('[data-magnetics-percent]');
-        const progress = panel.querySelector('[data-magnetics-progress]');
-        const instruction = panel.querySelector('[data-magnetics-instruction]');
-        const resultText = panel.querySelector('[data-magnetics-result-text]');
-        const reset = panel.querySelector('[data-magnetics-reset]');
-        const valueNodes = ['x', 'y', 'z'].map((axis) => panel.querySelector(`[data-magnetics-${axis}]`));
-        const barNodes = ['x', 'y', 'z'].map((axis) => panel.querySelector(`[data-magnetics-${axis}-bar]`));
-
-        if (!chamber || !tool || targets.length !== 6 || !status || !percent || !progress || !instruction || !resultText || !reset) {
-          return;
-        }
-
-        const targetAngles = targets.map((target, index) => {
-          const angle = -90 + (index * 60);
-          const radians = angle * Math.PI / 180;
-          target.style.left = `${50 + (42 * Math.cos(radians))}%`;
-          target.style.top = `${50 + (42 * Math.sin(radians))}%`;
-          return angle;
-        });
-
-        const captured = new Set();
-        let angle = -90;
-        let dragging = false;
-
-        function normalize(value) {
-          return ((value % 360) + 360) % 360;
-        }
-
-        function distanceBetween(first, second) {
-          const difference = Math.abs(normalize(first) - normalize(second));
-          return Math.min(difference, 360 - difference);
-        }
-
-        function formatValue(value) {
-          return `${value >= 0 ? '+' : ''}${value.toFixed(2)}`;
-        }
-
-        function updateReadout() {
-          const radians = angle * Math.PI / 180;
-          const values = [
-            Math.cos(radians),
-            Math.sin(radians),
-            Math.cos((radians * 1.7) + .65) * .78
-          ];
-
-          values.forEach((value, index) => {
-            if (valueNodes[index]) {
-              valueNodes[index].textContent = formatValue(value);
-            }
-
-            if (barNodes[index]) {
-              barNodes[index].style.width = `${Math.max(8, Math.abs(value) * 100)}%`;
-            }
-          });
-        }
-
-        function updateProgress() {
-          const count = captured.size;
-          const completion = Math.round((count / targets.length) * 100);
-
-          targets.forEach((target, index) => {
-            target.classList.toggle('is-captured', captured.has(index));
-          });
-
-          status.textContent = count === targets.length ? 'CALIBRATION COMPLETE' : `${count} / ${targets.length} CAPTURED`;
-          percent.textContent = `${completion}%`;
-          progress.style.width = `${completion}%`;
-
-          const complete = count === targets.length;
-          panel.classList.toggle('is-complete', complete);
-          resultText.textContent = complete ? 'PASS' : 'INCOMPLETE';
-          instruction.textContent = complete
-            ? 'Sweep complete. All simulated orientation points are captured.'
-            : count
-              ? `${targets.length - count} point${targets.length - count === 1 ? '' : 's'} remaining — keep rotating the tool.`
-              : 'Drag the tool through all six points to simulate a calibration sweep.';
-        }
-
-        function render(shouldCapture = false) {
-          tool.style.setProperty('--tool-angle', `${angle}deg`);
-          updateReadout();
-
-          if (shouldCapture && captured.size < targets.length) {
-            targetAngles.forEach((targetAngle, index) => {
-              if (distanceBetween(angle, targetAngle) <= 17) {
-                captured.add(index);
-              }
-            });
-          }
-
-          updateProgress();
-        }
-
-        function angleFromPointer(event) {
-          const bounds = chamber.getBoundingClientRect();
-          const x = event.clientX - (bounds.left + bounds.width / 2);
-          const y = event.clientY - (bounds.top + bounds.height / 2);
-          angle = Math.atan2(y, x) * 180 / Math.PI;
-          render(true);
-        }
-
-        chamber.addEventListener('pointerdown', (event) => {
-          dragging = true;
-          chamber.setPointerCapture(event.pointerId);
-          angleFromPointer(event);
-        });
-
-        chamber.addEventListener('pointermove', (event) => {
-          if (dragging) {
-            angleFromPointer(event);
-          }
-        });
-
-        chamber.addEventListener('pointerup', (event) => {
-          dragging = false;
-
-          if (chamber.hasPointerCapture(event.pointerId)) {
-            chamber.releasePointerCapture(event.pointerId);
-          }
-        });
-
-        chamber.addEventListener('pointercancel', () => {
-          dragging = false;
-        });
-
-        chamber.addEventListener('keydown', (event) => {
-          if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
-            return;
-          }
-
-          event.preventDefault();
-          angle += event.key === 'ArrowRight' ? 15 : -15;
-          render(true);
-        });
-
-        reset.addEventListener('click', () => {
-          captured.clear();
-          angle = -90;
-          render(false);
-          chamber.focus({ preventScroll: true });
-        });
-
-        render(false);
-      }
-
       function initMatrix() {
         const grid = document.querySelector('[data-matrix-grid]');
         const toggle = document.querySelector('[data-matrix-toggle]');
@@ -2900,7 +2855,6 @@
         });
       }
 
-      initMagnetics();
       initMatrix();
       initSync();
     })();
